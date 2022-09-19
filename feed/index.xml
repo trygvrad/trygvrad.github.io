@@ -12,7 +12,7 @@
 	<atom:link href="/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Fri, 16 Sep 2022 17:59:22 +0000</lastBuildDate>
+	<lastBuildDate>Mon, 19 Sep 2022 08:57:09 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -20,6 +20,50 @@
 	1	</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=6.0.2</generator>
 	<item>
+		<title>Crystal structures as vector graphics</title>
+		<link>/crystal-structures-as-vector-graphics/</link>
+					<comments>/crystal-structures-as-vector-graphics/#respond</comments>
+		
+		<dc:creator><![CDATA[trygvrad]]></dc:creator>
+		<pubDate>Mon, 19 Sep 2022 08:57:09 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">/?p=73</guid>
+
+					<description><![CDATA[Pychrysvis is a Streamlit app for making vector graphics from crystal structures (.cif files), with source on github. The you can then edit the vector graphics further in Inkscape, and make more advanced figures. like an explanation of dark-field X-ray... <a class="more-link" href="/crystal-structures-as-vector-graphics/">Continue Reading &#8594;</a>]]></description>
+										<content:encoded><![CDATA[
+<p>Pychrysvis is a <a href="https://trygvrad-pychrysvis-pychrysvis-streamlit-wbewzd.streamlitapp.com/">Streamlit app</a> for making vector graphics from crystal structures (.cif files), with source on <a href="https://github.com/trygvrad/pychrysvis/">github</a>.</p>
+
+
+
+<p>The you can then edit the vector graphics further in Inkscape, and make more advanced figures.</p>
+
+
+
+<p>like an explanation of dark-field X-ray microscopy:</p>
+
+
+
+<figure class="wp-block-image size-large"><img width="1024" height="642" src="/wp-content/uploads/2022/09/DFXRM_modes-1024x642.png" alt="" class="wp-image-75" srcset="/wp-content/uploads/2022/09/DFXRM_modes-1024x642.png 1024w, /wp-content/uploads/2022/09/DFXRM_modes-300x188.png 300w, /wp-content/uploads/2022/09/DFXRM_modes-768x482.png 768w, /wp-content/uploads/2022/09/DFXRM_modes-600x376.png 600w, /wp-content/uploads/2022/09/DFXRM_modes-945x593.png 945w, /wp-content/uploads/2022/09/DFXRM_modes.png 1500w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption>Diamond viewed along different axes:</figcaption></figure>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="219" src="/wp-content/uploads/2022/09/diamond-1024x219.png" alt="" class="wp-image-76" srcset="/wp-content/uploads/2022/09/diamond-1024x219.png 1024w, /wp-content/uploads/2022/09/diamond-300x64.png 300w, /wp-content/uploads/2022/09/diamond-768x165.png 768w, /wp-content/uploads/2022/09/diamond-1536x329.png 1536w, /wp-content/uploads/2022/09/diamond-600x129.png 600w, /wp-content/uploads/2022/09/diamond-945x202.png 945w, /wp-content/uploads/2022/09/diamond.png 1867w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>I prefer to work with vector graphics wherever possible, and I was not able to find a suitable tool online, so I built this tool from leftover scraps of other projects.</p>
+
+
+
+<p>There is minimal documentation, but perhaps someone else will find it useful nonetheless.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/crystal-structures-as-vector-graphics/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
 		<title>.edf viewer</title>
 		<link>/edf-viewer/</link>
 		

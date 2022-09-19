@@ -7,9 +7,9 @@
 	>
 <channel>
 	<title>
-	Comments for Projects of TMR	</title>
-	<atom:link href="/comments/feed/" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	Comments on: Crystal structures as vector graphics	</title>
+	<atom:link href="/crystal-structures-as-vector-graphics/feed/" rel="self" type="application/rss+xml" />
+	<link>/crystal-structures-as-vector-graphics/</link>
 	<description>Science × Programming</description>
 	<lastBuildDate>Mon, 19 Sep 2022 08:57:09 +0000</lastBuildDate>
 	<sy:updatePeriod>
