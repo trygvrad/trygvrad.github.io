@@ -12,7 +12,7 @@
 	<atom:link href="/category/uncategorized/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Mon, 19 Sep 2022 08:57:09 +0000</lastBuildDate>
+	<lastBuildDate>Mon, 19 Sep 2022 09:26:01 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -252,13 +252,13 @@
 				<category><![CDATA[Uncategorized]]></category>
 		<guid isPermaLink="false">:851/?p=14</guid>
 
-					<description><![CDATA[A DF-XRM experiment deals with experimental geometry, sample geometry, real space and reciprocal space. To aid experimental planning I present my DF-XRM visualization app.]]></description>
+					<description><![CDATA[A DF-XRM experiment deals with experimental geometry, sample geometry, real space and reciprocal space. To aid experimental planning I present my DF-XRM visualization app, with source code on github.]]></description>
 										<content:encoded><![CDATA[
-<p>A DF-XRM experiment deals with experimental geometry, sample geometry, real space and reciprocal space. To aid experimental planning I present my DF-XRM visualization <a href="https://trygvrad-df-xrm-viz-df-xrm-vis-streamlit-91mzhk.streamlitapp.com/">app</a>. </p>
+<p>A DF-XRM experiment deals with experimental geometry, sample geometry, real space and reciprocal space. To aid experimental planning I present my DF-XRM visualization <a href="https://trygvrad-df-xrm-viz-df-xrm-vis-streamlit-91mzhk.streamlitapp.com/">app</a>, with source code on <a href="https://github.com/trygvrad/DF-XRM_viz">github</a>.</p>
 
 
 
-<iframe src="https://trygvrad-df-xrm-viz-df-xrm-vis-streamlit-91mzhk.streamlitapp.com/?embedded=true" style="width:1750px; height:3500px !important;"></iframe>
+<figure class="wp-block-image size-large"><img loading="lazy" width="413" height="1024" src="/wp-content/uploads/2022/09/dfxrm_visualization_example-413x1024.png" alt="" class="wp-image-79" srcset="/wp-content/uploads/2022/09/dfxrm_visualization_example-413x1024.png 413w, /wp-content/uploads/2022/09/dfxrm_visualization_example-121x300.png 121w, /wp-content/uploads/2022/09/dfxrm_visualization_example-768x1904.png 768w, /wp-content/uploads/2022/09/dfxrm_visualization_example-619x1536.png 619w, /wp-content/uploads/2022/09/dfxrm_visualization_example-826x2048.png 826w, /wp-content/uploads/2022/09/dfxrm_visualization_example-600x1488.png 600w, /wp-content/uploads/2022/09/dfxrm_visualization_example.png 924w" sizes="(max-width: 413px) 100vw, 413px" /></figure>
 ]]></content:encoded>
 					
 		
