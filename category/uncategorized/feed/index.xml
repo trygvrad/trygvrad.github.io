@@ -12,22 +12,172 @@
 	<atom:link href="/category/uncategorized/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Mon, 19 Sep 2022 09:26:01 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 13 Jun 2023 22:53:52 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.0.2</generator>
+	<generator>https://wordpress.org/?v=6.2.2</generator>
 	<item>
-		<title>Crystal structures as vector graphics</title>
-		<link>/crystal-structures-as-vector-graphics/</link>
-					<comments>/crystal-structures-as-vector-graphics/#respond</comments>
+		<title>Project in 1 minute</title>
+		<link>/project-in-1-minute/</link>
 		
 		<dc:creator><![CDATA[trygvrad]]></dc:creator>
-		<pubDate>Mon, 19 Sep 2022 08:57:09 +0000</pubDate>
+		<pubDate>Tue, 13 Jun 2023 22:32:56 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=73</guid>
+		<guid isPermaLink="false">/?p=75</guid>
+
+					<description><![CDATA[Here I describe my Marie Skłodowska–Curie project in 1 minute.Thank you to the Eurotech foundation for prodding me to make this video.]]></description>
+										<content:encoded><![CDATA[
+<figure class="wp-block-video"><video controls src="/wp-content/uploads/2023/06/TMR.mp4"></video></figure>
+
+
+
+<p>Here I describe my Marie Skłodowska–Curie project in 1 minute.<br>Thank you to the Eurotech foundation for prodding me to make this video.<br></p>
+]]></content:encoded>
+					
+		
+		<enclosure url="/wp-content/uploads/2023/06/TMR.mp4" length="9698819" type="video/mp4" />
+
+			</item>
+		<item>
+		<title>Visualizing Dark-Field X-ray Microscopy</title>
+		<link>/visualizing-dark-field-x-ray-microscopy/</link>
+		
+		<dc:creator><![CDATA[trygvrad]]></dc:creator>
+		<pubDate>Thu, 18 May 2023 22:46:50 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">/?p=80</guid>
+
+					<description><![CDATA[A DF-XRM experiment deals with experimental geometry, sample geometry, real space and reciprocal space. To aid experimental planning I present my DF-XRM visualization app, with source code on github. There is an associated publication in the Journal of Open Source... <a class="more-link" href="/visualizing-dark-field-x-ray-microscopy/">Continue Reading &#8594;</a>]]></description>
+										<content:encoded><![CDATA[
+<p>A DF-XRM experiment deals with experimental geometry, sample geometry, real space and reciprocal space. To aid experimental planning I present my DF-XRM visualization <a href="https://trygvrad-df-xrm-viz-df-xrm-vis-streamlit-91mzhk.streamlitapp.com/">app</a>, with source code on <a href="https://github.com/trygvrad/DF-XRM_viz">github</a>.</p>
+
+
+
+<p>There is an associated publication in the <a href="https://joss.theoj.org/papers/10.21105/joss.05177">Journal of Open Source Software</a> </p>
+
+
+
+<figure class="wp-block-image is-resized"><a href="https://doi.org/10.21105/joss.05177"><img decoding="async" src="https://joss.theoj.org/papers/10.21105/joss.05177/status.svg" alt="DOI" width="168" height="20"/></a></figure>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" loading="lazy" width="413" height="1024" src="/wp-content/uploads/2023/06/dfxrm_visualization_example-413x1024.png" alt="" class="wp-image-83" srcset="/wp-content/uploads/2023/06/dfxrm_visualization_example-413x1024.png 413w, /wp-content/uploads/2023/06/dfxrm_visualization_example-121x300.png 121w, /wp-content/uploads/2023/06/dfxrm_visualization_example-768x1904.png 768w, /wp-content/uploads/2023/06/dfxrm_visualization_example-619x1536.png 619w, /wp-content/uploads/2023/06/dfxrm_visualization_example-826x2048.png 826w, /wp-content/uploads/2023/06/dfxrm_visualization_example-600x1488.png 600w, /wp-content/uploads/2023/06/dfxrm_visualization_example.png 924w" sizes="(max-width: 413px) 100vw, 413px" /></figure>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Colorstamps – 2d colormaps</title>
+		<link>/colorstamps-2d-colormaps/</link>
+		
+		<dc:creator><![CDATA[trygvrad]]></dc:creator>
+		<pubDate>Sun, 25 Sep 2022 22:16:49 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">/?p=67</guid>
+
+					<description><![CDATA[Colorstamps is a python package hosted on github and pypi for 2d colorstamps in defined as geometric shapes in the CAM02-LCD colorspace. Documentation at readthedocs. The package is inspired by the uniform colormaps in matplotlib, which has has greatly improved... <a class="more-link" href="/colorstamps-2d-colormaps/">Continue Reading &#8594;</a>]]></description>
+										<content:encoded><![CDATA[
+<p>Colorstamps is a python package hosted on <a href="https://github.com/trygvrad/colorstamps/">github</a> and <a href="https://pypi.org/project/colorstamps/">pypi</a> for 2d colorstamps in defined as geometric shapes in the CAM02-LCD <a href="https://github.com/njsmith/colorspacious">colorspace</a>. Documentation at <a href="https://colorstamps.readthedocs.io/en/latest/">readthedocs</a>. The package is inspired by the uniform colormaps in <a href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">matplotlib</a>, which has has greatly improved the visualization of scalar scientific image data.</p>
+
+
+
+<p>The project contains a number of 2d colormaps (stamps), suitable for different data types, it is useful to distinguish between data of like-type, and data of different type, and also unimodal (only positive) and bimodal (positive and negative) data.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" loading="lazy" width="425" height="1024" src="/wp-content/uploads/2023/06/colormaps-425x1024.png" alt="" class="wp-image-68" srcset="/wp-content/uploads/2023/06/colormaps-425x1024.png 425w, /wp-content/uploads/2023/06/colormaps-125x300.png 125w, /wp-content/uploads/2023/06/colormaps-600x1445.png 600w, /wp-content/uploads/2023/06/colormaps.png 615w" sizes="(max-width: 425px) 100vw, 425px" /></figure>
+
+
+
+<p>• If both axes are bimodal, and of like type, the axis should have a round shape with an origin in the middle, and ‘disk’/’cone’/’funnel’ are suitable.<br>• With one unimodal and one bimodal axis (i.e. intensity + phase shift etc.) ‘cut’ is a suitable colormap, and this exists in mulitple variations. If one axis is circular, ‘barrel’ loops on the x-axis.<br>• With two unimodal axis, ‘orangeBlue’ is recommended.</p>
+
+
+
+<p>Data outside the colormap must be projected into the valid space, and there are multiple options.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="455" height="208" src="/wp-content/uploads/2023/06/point_outside_colormap.webp" alt="" class="wp-image-72" srcset="/wp-content/uploads/2023/06/point_outside_colormap.webp 455w, /wp-content/uploads/2023/06/point_outside_colormap-300x137.webp 300w" sizes="(max-width: 455px) 100vw, 455px" /></figure>
+
+
+
+<p>Finally, the RGB colorspace on a computer can only represent a fraction of the CAM02-LCD colorspace, and colorstamps will limit the colors in the colormap to fit the RGB colorspace. A tool for evaluation of 2d colormaps are included.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="589" height="130" src="/wp-content/uploads/2023/06/eval_peak.png" alt="" class="wp-image-71" srcset="/wp-content/uploads/2023/06/eval_peak.png 589w, /wp-content/uploads/2023/06/eval_peak-300x66.png 300w" sizes="(max-width: 589px) 100vw, 589px" /></figure>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="589" height="130" src="/wp-content/uploads/2023/06/eval_hsv-1.png" alt="" class="wp-image-70" srcset="/wp-content/uploads/2023/06/eval_hsv-1.png 589w, /wp-content/uploads/2023/06/eval_hsv-1-300x66.png 300w" sizes="(max-width: 589px) 100vw, 589px" /></figure>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Intedigitated electrodes</title>
+		<link>/intedigitated-electrodes/</link>
+		
+		<dc:creator><![CDATA[trygvrad]]></dc:creator>
+		<pubDate>Fri, 23 Sep 2022 22:13:08 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">/?p=62</guid>
+
+					<description><![CDATA[I built a model for the electric field in thin-films with interdigitated electrodes. An interactive demo is hosted at Streamlit, while the source is hosted on Github. The model is presented in A unified approach for the calculation of in-plane... <a class="more-link" href="/intedigitated-electrodes/">Continue Reading &#8594;</a>]]></description>
+										<content:encoded><![CDATA[
+<p>I built a model for the electric field in thin-films with interdigitated electrodes.</p>
+
+
+
+<p>An interactive demo is hosted at <a href="https://trygvrad-interdigitated-electric-field-in-ides-streamlit-xuagjr.streamlit.app/">Streamlit</a>, while the source is hosted on <a href="https://github.com/trygvrad/Interdigitated-Electrodes">Github</a>.</p>
+
+
+
+<p>The model is presented in <a href="https://iopscience.iop.org/article/10.1088/1361-665X/abb4b9">A unified approach for the calculation of in-plane dielectric constant of films with interdigitated electrodes</a>.</p>
+
+
+
+<p>This work builds upon a knowledge base of a a series of works detailing how to accurately characterize in-plane ferroelectric properties of thin films, started in the group of Paul Muralt at EPFL, with works such as <a href="https://ieeexplore.ieee.org/document/6297833">1</a> <a href="https://aip.scitation.org/doi/full/10.1063/1.4983772">2</a> and <a href="https://iopscience.iop.org/article/10.1088/1361-6463/aab2a1/meta">3</a>.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Mailsail – A Sailing Game</title>
+		<link>/mailsail-a-sailing-game/</link>
+		
+		<dc:creator><![CDATA[trygvrad]]></dc:creator>
+		<pubDate>Wed, 21 Sep 2022 22:11:48 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">/?p=58</guid>
+
+					<description><![CDATA[Mailsail is a sailing game made during a 2-week game jam in 2022.The game is fully playable in the browser at https://trygvrad.itch.io/mailsail]]></description>
+										<content:encoded><![CDATA[
+<p>Mailsail is a sailing game made during a 2-week game jam in 2022.<br>The game is fully playable in the browser at <a href="https://trygvrad.itch.io/mailsail">https://trygvrad.itch.io/mailsail</a></p>
+
+
+
+<iframe allowfullscreen="true" scrolling="no" allow="autoplay; fullscreen *; geolocation; microphone; camera; midi; monetization; xr-spatial-tracking; gamepad; gyroscope; accelerometer; xr; cross-origin-isolated" id="game_drop" allowtransparency="true" webkitallowfullscreen="true" mozallowfullscreen="true" msallowfullscreen="true" src="https://v6p9d9t4.ssl.hwcdn.net/html/6467501/index.html" style="width: 604.583px; height: 780px;" frameborder="0">
+</iframe>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Crystal structures as vector graphics</title>
+		<link>/crystal-structures-as-vector-graphics/</link>
+		
+		<dc:creator><![CDATA[trygvrad]]></dc:creator>
+		<pubDate>Mon, 19 Sep 2022 22:02:57 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">/?p=53</guid>
 
 					<description><![CDATA[Pychrysvis is a Streamlit app for making vector graphics from crystal structures (.cif files), with source on github. The you can then edit the vector graphics further in Inkscape, and make more advanced figures. like an explanation of dark-field X-ray... <a class="more-link" href="/crystal-structures-as-vector-graphics/">Continue Reading &#8594;</a>]]></description>
 										<content:encoded><![CDATA[
@@ -43,11 +193,15 @@
 
 
 
-<figure class="wp-block-image size-large"><img width="1024" height="642" src="/wp-content/uploads/2022/09/DFXRM_modes-1024x642.png" alt="" class="wp-image-75" srcset="/wp-content/uploads/2022/09/DFXRM_modes-1024x642.png 1024w, /wp-content/uploads/2022/09/DFXRM_modes-300x188.png 300w, /wp-content/uploads/2022/09/DFXRM_modes-768x482.png 768w, /wp-content/uploads/2022/09/DFXRM_modes-600x376.png 600w, /wp-content/uploads/2022/09/DFXRM_modes-945x593.png 945w, /wp-content/uploads/2022/09/DFXRM_modes.png 1500w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption>Diamond viewed along different axes:</figcaption></figure>
+<figure class="wp-block-image size-large"><img decoding="async" loading="lazy" width="1024" height="642" src="/wp-content/uploads/2023/06/DFXRM_modes-1024x642.png" alt="" class="wp-image-55" srcset="/wp-content/uploads/2023/06/DFXRM_modes-1024x642.png 1024w, /wp-content/uploads/2023/06/DFXRM_modes-300x188.png 300w, /wp-content/uploads/2023/06/DFXRM_modes-768x482.png 768w, /wp-content/uploads/2023/06/DFXRM_modes-600x376.png 600w, /wp-content/uploads/2023/06/DFXRM_modes-945x593.png 945w, /wp-content/uploads/2023/06/DFXRM_modes.png 1500w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
-<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="219" src="/wp-content/uploads/2022/09/diamond-1024x219.png" alt="" class="wp-image-76" srcset="/wp-content/uploads/2022/09/diamond-1024x219.png 1024w, /wp-content/uploads/2022/09/diamond-300x64.png 300w, /wp-content/uploads/2022/09/diamond-768x165.png 768w, /wp-content/uploads/2022/09/diamond-1536x329.png 1536w, /wp-content/uploads/2022/09/diamond-600x129.png 600w, /wp-content/uploads/2022/09/diamond-945x202.png 945w, /wp-content/uploads/2022/09/diamond.png 1867w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<p>Diamond viewed along different axes:</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" loading="lazy" width="1024" height="219" src="/wp-content/uploads/2023/06/diamond-1024x219.png" alt="" class="wp-image-56" srcset="/wp-content/uploads/2023/06/diamond-1024x219.png 1024w, /wp-content/uploads/2023/06/diamond-300x64.png 300w, /wp-content/uploads/2023/06/diamond-768x165.png 768w, /wp-content/uploads/2023/06/diamond-1536x329.png 1536w, /wp-content/uploads/2023/06/diamond-600x129.png 600w, /wp-content/uploads/2023/06/diamond-945x202.png 945w, /wp-content/uploads/2023/06/diamond.png 1867w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -58,8 +212,6 @@
 <p>There is minimal documentation, but perhaps someone else will find it useful nonetheless.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/crystal-structures-as-vector-graphics/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
 		
 		
 			</item>
@@ -68,9 +220,9 @@
 		<link>/edf-viewer/</link>
 		
 		<dc:creator><![CDATA[trygvrad]]></dc:creator>
-		<pubDate>Thu, 15 Sep 2022 20:06:10 +0000</pubDate>
+		<pubDate>Thu, 15 Sep 2022 21:55:29 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">:851/?p=70</guid>
+		<guid isPermaLink="false">/?p=50</guid>
 
 					<description><![CDATA[My edf viewer is a simple program to explore .edf files from the European Synchrotron Radiation Facility (ESRF). Built using pyFAI, PySide2 and pyqtgraph, the program allows the user to have a quick look at data and check metadata, i.e.... <a class="more-link" href="/edf-viewer/">Continue Reading &#8594;</a>]]></description>
 										<content:encoded><![CDATA[
@@ -85,41 +237,13 @@
 		
 			</item>
 		<item>
-		<title>Mailsail &#8211; A Sailing Game</title>
-		<link>/mailsail-a-sailing-game/</link>
-		
-		<dc:creator><![CDATA[trygvrad]]></dc:creator>
-		<pubDate>Wed, 14 Sep 2022 16:18:27 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">:851/?p=64</guid>
-
-					<description><![CDATA[Mailsail is a sailing game made during a 2-week game jam in 2022. The game is fully playable in the browser at https://trygvrad.itch.io/mailsail]]></description>
-										<content:encoded><![CDATA[
-<p>Mailsail is a sailing game made during a 2-week game jam in 2022. <br>The game is fully playable in the browser at <a href="https://trygvrad.itch.io/mailsail">https://trygvrad.itch.io/mailsail</a></p>
-
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<div class="iframe-edm">
-<iframe frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay; fullscreen *; geolocation; microphone; camera; midi; monetization; xr-spatial-tracking; gamepad; gyroscope; accelerometer; xr; cross-origin-isolated" id="game_drop" allowtransparency="true" webkitallowfullscreen="true" mozallowfullscreen="true" msallowfullscreen="true" src="https://v6p9d9t4.ssl.hwcdn.net/html/6467501/index.html" style="width:1280px; height:780px; important;" >
-</iframe>
-</div>
-
-
-
-]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
 		<title>Colorshifter</title>
 		<link>/colorshifter/</link>
 		
 		<dc:creator><![CDATA[trygvrad]]></dc:creator>
-		<pubDate>Wed, 14 Sep 2022 15:42:31 +0000</pubDate>
+		<pubDate>Wed, 14 Sep 2022 21:24:34 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">:851/?p=58</guid>
+		<guid isPermaLink="false">/?p=41</guid>
 
 					<description><![CDATA[Colorshifter is an image manipulation app that for transforming the colorspace of an image in L*a*b* color coordinates. github The left/right image is the original/transformed image The histogram allows the user to edit the lightness (L*) The colormap on the... <a class="more-link" href="/colorshifter/">Continue Reading &#8594;</a>]]></description>
 										<content:encoded><![CDATA[
@@ -139,7 +263,7 @@
 
 
 
-<p>Because not all colors in the transformed colorspace produce valid colors in RGB space, one may choose to limit the lighness or saturation for colors outside the RGB space. <br>To achieve specific transformations the a*b* plane may be rotated before the transformation occurs (rotating the primary axis of the rectangle)</p>
+<p>Because not all colors in the transformed colorspace produce valid colors in RGB space, one may choose to limit the lighness or saturation for colors outside the RGB space.<br>To achieve specific transformations the a*b* plane may be rotated before the transformation occurs (rotating the primary axis of the rectangle)</p>
 
 
 
@@ -147,7 +271,7 @@
 
 
 
-<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="551" src=":851/wp-content/uploads/2022/09/Example-0-1024x551.png" alt="" class="wp-image-59" srcset="/wp-content/uploads/2022/09/Example-0-1024x551.png 1024w, /wp-content/uploads/2022/09/Example-0-300x162.png 300w, /wp-content/uploads/2022/09/Example-0-768x414.png 768w, /wp-content/uploads/2022/09/Example-0-1536x827.png 1536w, /wp-content/uploads/2022/09/Example-0-600x323.png 600w, /wp-content/uploads/2022/09/Example-0-945x509.png 945w, /wp-content/uploads/2022/09/Example-0.png 1731w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="1024" height="551" src="/wp-content/uploads/2023/06/Example-0-1024x551-1.png" alt="" class="wp-image-42" srcset="/wp-content/uploads/2023/06/Example-0-1024x551-1.png 1024w, /wp-content/uploads/2023/06/Example-0-1024x551-1-300x161.png 300w, /wp-content/uploads/2023/06/Example-0-1024x551-1-768x413.png 768w, /wp-content/uploads/2023/06/Example-0-1024x551-1-600x323.png 600w, /wp-content/uploads/2023/06/Example-0-1024x551-1-945x508.png 945w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -155,7 +279,7 @@
 
 
 
-<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="593" src=":851/wp-content/uploads/2022/09/example-2-1024x593.png" alt="" class="wp-image-60" srcset="/wp-content/uploads/2022/09/example-2-1024x593.png 1024w, /wp-content/uploads/2022/09/example-2-300x174.png 300w, /wp-content/uploads/2022/09/example-2-768x445.png 768w, /wp-content/uploads/2022/09/example-2-600x347.png 600w, /wp-content/uploads/2022/09/example-2-945x547.png 945w, /wp-content/uploads/2022/09/example-2.png 1466w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="1024" height="593" src="/wp-content/uploads/2023/06/example-2-1024x593-1.png" alt="" class="wp-image-43" srcset="/wp-content/uploads/2023/06/example-2-1024x593-1.png 1024w, /wp-content/uploads/2023/06/example-2-1024x593-1-300x174.png 300w, /wp-content/uploads/2023/06/example-2-1024x593-1-768x445.png 768w, /wp-content/uploads/2023/06/example-2-1024x593-1-600x347.png 600w, /wp-content/uploads/2023/06/example-2-1024x593-1-945x547.png 945w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -163,7 +287,7 @@
 
 
 
-<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="595" src=":851/wp-content/uploads/2022/09/example-1-1-1024x595.png" alt="" class="wp-image-62" srcset="/wp-content/uploads/2022/09/example-1-1-1024x595.png 1024w, /wp-content/uploads/2022/09/example-1-1-300x174.png 300w, /wp-content/uploads/2022/09/example-1-1-768x446.png 768w, /wp-content/uploads/2022/09/example-1-1-600x349.png 600w, /wp-content/uploads/2022/09/example-1-1-945x549.png 945w, /wp-content/uploads/2022/09/example-1-1.png 1475w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="1024" height="595" src="/wp-content/uploads/2023/06/example-1-1-1024x595-1.png" alt="" class="wp-image-44" srcset="/wp-content/uploads/2023/06/example-1-1-1024x595-1.png 1024w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-300x174.png 300w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-768x446.png 768w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-600x349.png 600w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-945x549.png 945w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 ]]></content:encoded>
 					
 		
@@ -174,128 +298,21 @@
 		<link>/lut-combiner/</link>
 		
 		<dc:creator><![CDATA[trygvrad]]></dc:creator>
-		<pubDate>Wed, 14 Sep 2022 15:19:04 +0000</pubDate>
+		<pubDate>Wed, 14 Sep 2022 21:11:25 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">:851/?p=54</guid>
+		<guid isPermaLink="false">/?p=33</guid>
 
 					<description><![CDATA[LUT combiner (github) is a small desktop application for overlaying different microscopy images with different lookup tables (LUTs) into a color image. The program supports 2 or 3 images. The program was made at the request of a friend and... <a class="more-link" href="/lut-combiner/">Continue Reading &#8594;</a>]]></description>
 										<content:encoded><![CDATA[
-<p>LUT combiner (<a href="https://github.com/trygvrad/lut_combiner">github</a>) is a small desktop application for overlaying different microscopy images with different lookup tables (LUTs) into a color image. The program supports 2 or 3 images.  </p>
+<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="910" height="539" src="/wp-content/uploads/2022/09/lut_combiner-2.png" alt="" class="wp-image-37" srcset="/wp-content/uploads/2022/09/lut_combiner-2.png 910w, /wp-content/uploads/2022/09/lut_combiner-2-300x178.png 300w, /wp-content/uploads/2022/09/lut_combiner-2-768x455.png 768w, /wp-content/uploads/2022/09/lut_combiner-2-600x355.png 600w" sizes="(max-width: 910px) 100vw, 910px" /></figure>
+
+
+
+<p>LUT combiner (<a href="https://github.com/trygvrad/lut_combiner">github</a>) is a small desktop application for overlaying different microscopy images with different lookup tables (LUTs) into a color image. The program supports 2 or 3 images.</p>
 
 
 
 <p>The program was made at the request of a friend and is built using pyqtgraph and 3-color LUTs from <a href="https://github.com/cleterrier/ChrisLUTs">ChrisLUTs</a></p>
-]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>Colorstamps &#8211; 2d colormaps</title>
-		<link>/colorstamps-2d-colormaps/</link>
-		
-		<dc:creator><![CDATA[trygvrad]]></dc:creator>
-		<pubDate>Wed, 14 Sep 2022 14:49:25 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">:851/?p=45</guid>
-
-					<description><![CDATA[Colorstamps is a python package hosted on github and pypi for 2d colorstamps in defined as geometric shapes in the CAM02-LCD colorspace. Documentation at readthedocs. The package is inspired by the uniform colormaps in matplotlib, which has has greatly improved... <a class="more-link" href="/colorstamps-2d-colormaps/">Continue Reading &#8594;</a>]]></description>
-										<content:encoded><![CDATA[
-<p>Colorstamps is a python package hosted on <a href="https://github.com/trygvrad/colorstamps/">github</a> and <a href="https://pypi.org/project/colorstamps/">pypi</a> for 2d colorstamps in defined as geometric shapes in the CAM02-LCD <a href="https://github.com/njsmith/colorspacious">colorspace</a>. Documentation at <a href="https://colorstamps.readthedocs.io/en/latest/">readthedocs</a>. The package is inspired by the uniform colormaps in <a href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">matplotlib</a>, which has has greatly improved the visualization of scalar scientific image data.</p>
-
-
-
-<p>The project contains a number of 2d colormaps (stamps), suitable for different data types, it is useful to distinguish between data of like-type, and data of different type, and also unimodal (only positive) and bimodal (positive and negative) data.</p>
-
-
-
-<figure class="wp-block-image size-large"><img loading="lazy" width="425" height="1024" src=":851/wp-content/uploads/2022/09/colormaps-425x1024.png" alt="" class="wp-image-47" srcset="/wp-content/uploads/2022/09/colormaps-425x1024.png 425w, /wp-content/uploads/2022/09/colormaps-125x300.png 125w, /wp-content/uploads/2022/09/colormaps-600x1445.png 600w, /wp-content/uploads/2022/09/colormaps.png 615w" sizes="(max-width: 425px) 100vw, 425px" /></figure>
-
-
-
-<p> • If both axes are bimodal, and of like type, the axis should have a round shape with an origin in the middle, and &#8216;disk&#8217;/&#8217;cone&#8217;/&#8217;funnel&#8217; are suitable.<br> • With one unimodal and one bimodal axis (i.e. intensity + phase shift etc.) &#8216;cut&#8217; is a suitable colormap, and this exists in mulitple variations. If one axis is circular, &#8216;barrel&#8217; loops on the x-axis.<br> • With two unimodal axis, &#8216;orangeBlue&#8217; is recommended.</p>
-
-
-
-<p> Data outside the colormap must be projected into the valid space, and there are multiple options.</p>
-
-
-
-<figure class="wp-block-image size-full"><img loading="lazy" width="455" height="208" src=":851/wp-content/uploads/2022/09/point_outside_colormap.webp" alt="" class="wp-image-46" srcset="/wp-content/uploads/2022/09/point_outside_colormap.webp 455w, /wp-content/uploads/2022/09/point_outside_colormap-300x137.webp 300w" sizes="(max-width: 455px) 100vw, 455px" /></figure>
-
-
-
-<p>Finally, the RGB colorspace on a computer can only represent a fraction of the CAM02-LCD colorspace, and colorstamps will limit the colors in the colormap to fit the RGB colorspace. A tool for evaluation of 2d colormaps are included. </p>
-
-
-
-<figure class="wp-block-image size-full"><img loading="lazy" width="589" height="130" src=":851/wp-content/uploads/2022/09/eval_peak.png" alt="" class="wp-image-51" srcset="/wp-content/uploads/2022/09/eval_peak.png 589w, /wp-content/uploads/2022/09/eval_peak-300x66.png 300w" sizes="(max-width: 589px) 100vw, 589px" /></figure>
-
-
-
-<figure class="wp-block-image size-full"><img loading="lazy" width="589" height="130" src=":851/wp-content/uploads/2022/09/eval_hsv.png" alt="" class="wp-image-50" srcset="/wp-content/uploads/2022/09/eval_hsv.png 589w, /wp-content/uploads/2022/09/eval_hsv-300x66.png 300w" sizes="(max-width: 589px) 100vw, 589px" /></figure>
-
-
-
-<p>This also includes an estimate of how the colormap looks with partial deuteranomaly (red-green color colorblindness) </p>
-]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>Visualizing Dark-Field X-ray Microscopy</title>
-		<link>/visualizing-dark-field-x-ray-microscopy/</link>
-		
-		<dc:creator><![CDATA[trygvrad]]></dc:creator>
-		<pubDate>Mon, 12 Sep 2022 13:50:11 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">:851/?p=14</guid>
-
-					<description><![CDATA[A DF-XRM experiment deals with experimental geometry, sample geometry, real space and reciprocal space. To aid experimental planning I present my DF-XRM visualization app, with source code on github.]]></description>
-										<content:encoded><![CDATA[
-<p>A DF-XRM experiment deals with experimental geometry, sample geometry, real space and reciprocal space. To aid experimental planning I present my DF-XRM visualization <a href="https://trygvrad-df-xrm-viz-df-xrm-vis-streamlit-91mzhk.streamlitapp.com/">app</a>, with source code on <a href="https://github.com/trygvrad/DF-XRM_viz">github</a>.</p>
-
-
-
-<figure class="wp-block-image size-large"><img loading="lazy" width="413" height="1024" src="/wp-content/uploads/2022/09/dfxrm_visualization_example-413x1024.png" alt="" class="wp-image-79" srcset="/wp-content/uploads/2022/09/dfxrm_visualization_example-413x1024.png 413w, /wp-content/uploads/2022/09/dfxrm_visualization_example-121x300.png 121w, /wp-content/uploads/2022/09/dfxrm_visualization_example-768x1904.png 768w, /wp-content/uploads/2022/09/dfxrm_visualization_example-619x1536.png 619w, /wp-content/uploads/2022/09/dfxrm_visualization_example-826x2048.png 826w, /wp-content/uploads/2022/09/dfxrm_visualization_example-600x1488.png 600w, /wp-content/uploads/2022/09/dfxrm_visualization_example.png 924w" sizes="(max-width: 413px) 100vw, 413px" /></figure>
-]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>Intedigitated electrodes</title>
-		<link>/hello-world/</link>
-		
-		<dc:creator><![CDATA[trygvrad]]></dc:creator>
-		<pubDate>Mon, 12 Sep 2022 13:00:36 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">:851/?p=1</guid>
-
-					<description><![CDATA[I built a model for the electric field in thin-films with interdigitated electrodes. An interactive demo is hosted on Heroku, while the source is hosted on Github. The model is presented in A unified approach for the calculation of in-plane... <a class="more-link" href="/hello-world/">Continue Reading &#8594;</a>]]></description>
-										<content:encoded><![CDATA[
-<p>I built a model for the electric field in thin-films with interdigitated electrodes. </p>
-
-
-
-<p>An interactive demo is hosted on <a href="http://interdigitated-electrodes.herokuapp.com/">Heroku</a>, while the source is hosted on <a href="https://github.com/trygvrad/Interdigitated-Electrodes">Github</a>.</p>
-
-
-
-<p>The model is presented in <a href="https://iopscience.iop.org/article/10.1088/1361-665X/abb4b9">A unified approach for the calculation of in-plane dielectric constant of films with interdigitated electrodes</a>.</p>
-
-
-
-<p>This work builds upon a knowledge base  of a a series of works detailing how to accurately characterize in-plane ferroelectric properties of thin films, started in the group of Paul Muralt at EPFL, with works such as <a href="https://ieeexplore.ieee.org/document/6297833">1</a> <a href="https://aip.scitation.org/doi/full/10.1063/1.4983772">2</a> and <a href="https://iopscience.iop.org/article/10.1088/1361-6463/aab2a1/meta">3</a>. </p>
-
-
-
-<p></p>
-
-
-
-<p></p>
 ]]></content:encoded>
 					
 		
