@@ -12,7 +12,7 @@
 	<atom:link href="/category/uncategorized/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Tue, 13 Jun 2023 22:53:52 +0000</lastBuildDate>
+	<lastBuildDate>Sat, 22 Jul 2023 12:20:43 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -20,6 +20,44 @@
 	1	</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=6.2.2</generator>
 	<item>
+		<title>GRC/GRS</title>
+		<link>/grc-grs-2/</link>
+					<comments>/grc-grs-2/#respond</comments>
+		
+		<dc:creator><![CDATA[trygvrad]]></dc:creator>
+		<pubDate>Sat, 22 Jul 2023 12:19:35 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">/?p=117</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[]]></content:encoded>
+					
+					<wfw:commentRss>/grc-grs-2/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>GRC/GRS</title>
+		<link>/grc-grs/</link>
+					<comments>/grc-grs/#respond</comments>
+		
+		<dc:creator><![CDATA[trygvrad]]></dc:creator>
+		<pubDate>Sat, 22 Jul 2023 12:17:09 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">/?p=87</guid>
+
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[
+<p> </p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/grc-grs/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
 		<title>Project in 1 minute</title>
 		<link>/project-in-1-minute/</link>
 		
@@ -288,31 +326,6 @@
 
 
 <figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="1024" height="595" src="/wp-content/uploads/2023/06/example-1-1-1024x595-1.png" alt="" class="wp-image-44" srcset="/wp-content/uploads/2023/06/example-1-1-1024x595-1.png 1024w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-300x174.png 300w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-768x446.png 768w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-600x349.png 600w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-945x549.png 945w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
-]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>LUT combiner</title>
-		<link>/lut-combiner/</link>
-		
-		<dc:creator><![CDATA[trygvrad]]></dc:creator>
-		<pubDate>Wed, 14 Sep 2022 21:11:25 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=33</guid>
-
-					<description><![CDATA[LUT combiner (github) is a small desktop application for overlaying different microscopy images with different lookup tables (LUTs) into a color image. The program supports 2 or 3 images. The program was made at the request of a friend and... <a class="more-link" href="/lut-combiner/">Continue Reading &#8594;</a>]]></description>
-										<content:encoded><![CDATA[
-<figure class="wp-block-image size-full"><img decoding="async" loading="lazy" width="910" height="539" src="/wp-content/uploads/2022/09/lut_combiner-2.png" alt="" class="wp-image-37" srcset="/wp-content/uploads/2022/09/lut_combiner-2.png 910w, /wp-content/uploads/2022/09/lut_combiner-2-300x178.png 300w, /wp-content/uploads/2022/09/lut_combiner-2-768x455.png 768w, /wp-content/uploads/2022/09/lut_combiner-2-600x355.png 600w" sizes="(max-width: 910px) 100vw, 910px" /></figure>
-
-
-
-<p>LUT combiner (<a href="https://github.com/trygvrad/lut_combiner">github</a>) is a small desktop application for overlaying different microscopy images with different lookup tables (LUTs) into a color image. The program supports 2 or 3 images.</p>
-
-
-
-<p>The program was made at the request of a friend and is built using pyqtgraph and 3-color LUTs from <a href="https://github.com/cleterrier/ChrisLUTs">ChrisLUTs</a></p>
 ]]></content:encoded>
 					
 		
