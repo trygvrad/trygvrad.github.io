@@ -11,11 +11,11 @@
 	<atom:link href="/crystal-structures-as-vector-graphics/feed/" rel="self" type="application/rss+xml" />
 	<link>/crystal-structures-as-vector-graphics/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Tue, 13 Jun 2023 22:53:41 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 06 Dec 2023 11:32:36 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.2.2</generator>
+	<generator>https://wordpress.org/?v=6.4.1</generator>
 </channel>
 </rss>

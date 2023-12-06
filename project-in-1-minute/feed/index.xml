@@ -7,15 +7,15 @@
 	>
 <channel>
 	<title>
-	Comments on: Project in 1 minute	</title>
+	Comments on: Marie Skłodowska-Curie project in 1 minute	</title>
 	<atom:link href="/project-in-1-minute/feed/" rel="self" type="application/rss+xml" />
 	<link>/project-in-1-minute/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Tue, 13 Jun 2023 22:53:11 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 06 Dec 2023 11:45:36 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.2.2</generator>
+	<generator>https://wordpress.org/?v=6.4.1</generator>
 </channel>
 </rss>

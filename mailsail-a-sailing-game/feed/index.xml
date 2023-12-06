@@ -11,11 +11,11 @@
 	<atom:link href="/mailsail-a-sailing-game/feed/" rel="self" type="application/rss+xml" />
 	<link>/mailsail-a-sailing-game/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Tue, 13 Jun 2023 22:53:36 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 06 Dec 2023 11:29:29 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.2.2</generator>
+	<generator>https://wordpress.org/?v=6.4.1</generator>
 </channel>
 </rss>
