@@ -12,21 +12,119 @@
 	<atom:link href="/category/uncategorized/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Wed, 06 Dec 2023 12:07:32 +0000</lastBuildDate>
+	<lastBuildDate>Mon, 12 Feb 2024 12:52:49 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.4.1</generator>
+	<generator>https://wordpress.org/?v=6.4.3</generator>
 	<item>
+		<title>Designing multivariate colormaps</title>
+		<link>/designing-multivariate-colormaps/</link>
+					<comments>/designing-multivariate-colormaps/#respond</comments>
+		
+		<dc:creator><![CDATA[trygvrad]]></dc:creator>
+		<pubDate>Mon, 12 Feb 2024 12:28:19 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">/?p=107</guid>
+
+					<description><![CDATA[Multivariate colormaps are seeing use in a number of domains that rely upon python ecosystem. I work with dark-field X-ray microscopy, which is one such domain, but there are numerous others, such as astronomy, polarization microscopy etc. While each domain may have dedicated tooling, darfix, astropy, xrayutilities etc, this tooling is built upon the scientific... <a class="more-link" href="/designing-multivariate-colormaps/#more-107">Continue Reading &#8594;</a>]]></description>
+										<content:encoded><![CDATA[
+<p>Multivariate colormaps are seeing use in a number of domains that rely upon python ecosystem. I work with dark-field X-ray microscopy, which is one such domain, but there are numerous others, such as astronomy, polarization microscopy etc. While each domain may have dedicated tooling, <a href="https://gitlab.esrf.fr/XRD/darfix">darfix</a>, <a href="https://www.astropy.org/">astropy</a>, <a href="https://xrayutilities.sourceforge.io/">xrayutilities</a> etc, this tooling is built upon the scientific python stack, including <a href="https://numpy.org/">numpy</a>, <a href="https://scipy.org/">scipy</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://matplotlib.org/">matplotlib</a>, <a href="https://plotly.com/">plotly</a>, etc. Since these domains share common challenges regarding multivariate colormaps, it would be ideal to handle these challenges upstream (i.e. in matplotlib, plotly, etc.) rather than in the domain-specific packages. In addition to the technical implementation, the design criteria for multivariate colormaps must be explored. </p>
+
+
+
+<p>For the design of colormaps, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Kovesi,+P">Peter Kovesis</a> paper (2015) covers the topic with great diligence, as is <a href="https://www.youtube.com/watch?v=xAoljeRJ3lU">Nathaniel Smith and Stéfan van der Walts talk</a> (2015) explaining the origin of the now-ubiquitous (at least in academia) &#8216;viridis&#8217; colormap. They outline an approach centered on human perception, where colormaps are designed to be perceptually uniform while maximizing the number of levels that can be distinguished. For multivariate colormaps, this approach has not previously been implemented.</p>
+
+
+
+<p><strong>2D colormaps</strong><br>Just as any continuous 1D colormap is a curve in colorspace, any continuous 2D colormap is a surface. <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Kovesi,+P">Peter Kovesis</a>, <a href="https://www.youtube.com/watch?v=xAoljeRJ3lU">Nathaniel Smith and Stéfan van der Walts </a>made the point that one should use a perceptually uniform colormap, such as <a href="https://en.wikipedia.org/wiki/CIELAB_color_space">CIELAB</a> when designing 1D colormaps, and this remains true for 2D colormaps. The sRBG color gamut is illustrated below in the colorspace CAM02-LCD (Large Color Difference) <a href="https://doi.org/10.1002/col.20227" data-type="link" data-id="https://doi.org/10.1002/col.20227">Luo et al. (2006)</a>.</p>
+
+
+
+<iframe src="https://trygvrad.github.io/plotly_2D_colormaps/fig.html" height="520" width="420" frameborder="0" allow="fullscreen"></iframe>
+
+
+
+<p>CAM02-LCD (and CIELAB) describes colorspace using three orthogonal axes: <strong>L*</strong>: lightness, <strong>a*</strong>: green-red, and <strong>b*</strong>: blue-yellow. The colorspace is designed to be perceptually uniform, i.e. the distance you need to move along an axis before you notice a change, should be the same along <strong>L*</strong>, <strong>a*</strong>, and <strong>b*</strong>.</p>
+
+
+
+<p>Colormap design is further determined by the kind of data the colormap is designed to represent. <a href="https://matplotlib.org/stable/users/explain/colors/colormaps.html#ibm">Matplotlib</a> groups colormaps as <strong>sequential</strong>, <strong>diverging</strong>, and <strong>cyclic</strong> (in addition to qualitative), designed to represent data that fit into those categories. For 2D colormaps, the two axis can represent categorically different data, making 6 different categories: sequential×sequential, sequential×diverging, sequential×cyclic, diverging×diverging, diverging×cyclic, cyclic×cyclic. One can compare the different categories to the axis in CIELAB space, where <strong>L*</strong> is <strong>sequential</strong>, <strong>a*/b*</strong> is <strong>diverging</strong>, and the <strong>hue</strong> (azimuthal around a*=b*=0) is <strong>cyclic</strong>.  </p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img fetchpriority="high" decoding="async" width="1018" height="513" src="/wp-content/uploads/2024/02/axes-1.png" alt="" class="wp-image-134" style="width:839px;height:auto" srcset="/wp-content/uploads/2024/02/axes-1.png 1018w, /wp-content/uploads/2024/02/axes-1-300x151.png 300w, /wp-content/uploads/2024/02/axes-1-768x387.png 768w, /wp-content/uploads/2024/02/axes-1-600x302.png 600w" sizes="(max-width: 1018px) 100vw, 1018px" /></figure>
+
+
+
+<p>These most relevant categories, are shown as 2D planes in 3D Lab space above.</p>
+
+
+
+<p>Using the shapes above to slice the sRGB color gamut will produce 2D colormaps. </p>
+
+
+
+<img decoding="async" src=":8000/cmaps.svg" style="width:820px;">
+<iframe src="https://trygvrad.github.io/plotly_2D_colormaps/3D_orangeBlue.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
+<iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/3D_cut.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
+<iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/3D_barrel.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
+<iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/3D_peak.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
+
+
+
+<p>Note that defining colormaps in Lab-space limits how much of the color gamut we can utilize. Colormaps defined in sRGB space provide a better utilization of the color gamut. Consider the following blue-orange bi-sequential colormaps:</p>
+
+
+
+<iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/orange_blue_Lab.html" height="300" width="285" frameborder="0" allow="fullscreen" scrolling="no" ></iframe>
+<img decoding="async" src=":8000/defined_in_mod.svg" style="height:300px;">
+<iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/orange_blue_RGB.html" height="300" width="285" frameborder="0" allow="fullscreen" scrolling="no" ></iframe>
+
+
+
+<p>The colormap defined in sRGB space has increased saturation because it is not limited by perceptual uniformity (i.e. the maximum orange has higher <strong>L*</strong> than the maximum blue). For many applications, the loss of perceptual uniformity is an acceptable trade for increased saturation (making the colormap &#8216;pop&#8217; more).</p>
+
+
+
+<p class="has-large-font-size">Adapting for colorblindness</p>
+
+
+
+<p>It is not possible to fully accommodate the various kinds of colorblindness in multi-dimensional colormaps. However, it is worth noting all the common forms of color-blindness affect primarily the <strong>a</strong>* (red-green) axis in Lab colorspace. Thus, when we design colormaps by slicing Lab space, we should preferentially slice along the <strong>b</strong>* (blue-yellow) axis, as is done above for the colormaps &#8216;orangeBlue&#8217; and &#8216;cut&#8217;. However, when making use of a the <strong>hue</strong> in a cyclic colormap, this is not possible. </p>
+
+
+
+<p>However, the hue can be cycled freely, and for the relevant colormaps the axes can be chosen such that the main features of the data are accessible also to those with common forms of colorblindness. The following figure shows the same data as seen by someone with normal color vision, and someone whom is red-green colorblind. For both cases, the data is shown with two different rotations of the colormap. With normal color vision, it is easily discernible that the two circled regions have different hue, but for someone who is red-green colorblind, this is only apparent if the colormap is rotated so that they are differentiated along the blue-yellow axis.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="442" src="/wp-content/uploads/2024/02/path166-1024x442.png" alt="" class="wp-image-136" srcset="/wp-content/uploads/2024/02/path166-1024x442.png 1024w, /wp-content/uploads/2024/02/path166-300x130.png 300w, /wp-content/uploads/2024/02/path166-768x332.png 768w, /wp-content/uploads/2024/02/path166-1536x663.png 1536w, /wp-content/uploads/2024/02/path166-1400x605.png 1400w, /wp-content/uploads/2024/02/path166-600x259.png 600w, /wp-content/uploads/2024/02/path166.png 1614w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>The rotation of the colormap is therefore of critical importance for accommodating those with common forms of colorblindness. <br><br></p>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/designing-multivariate-colormaps/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
 		<title>Visualizing Dark-Field X-ray Microscopy</title>
 		<link>/visualizing-dark-field-x-ray-microscopy/</link>
 		
 		<dc:creator><![CDATA[trygvrad]]></dc:creator>
 		<pubDate>Wed, 06 Dec 2023 11:39:32 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=93</guid>
+		<guid isPermaLink="false">http://localhost/?p=93</guid>
 
 					<description><![CDATA[A DF-XRM experiment deals with experimental geometry, sample geometry, real space and reciprocal space. To aid experimental planning I present my DF-XRM visualization app, with source code on github. There is an associated publication in the Journal of Open Source Software]]></description>
 										<content:encoded><![CDATA[
@@ -59,7 +157,7 @@
 		<dc:creator><![CDATA[trygvrad]]></dc:creator>
 		<pubDate>Tue, 13 Jun 2023 22:32:56 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=75</guid>
+		<guid isPermaLink="false">http://localhost/?p=75</guid>
 
 					<description><![CDATA[Here I describe my Marie Skłodowska–Curie project in 1 minute.Thank you to the Eurotech foundation for prodding me to make this video.]]></description>
 										<content:encoded><![CDATA[
@@ -71,11 +169,11 @@
 
 
 
-<figure class="wp-block-video"><video controls src="/wp-content/uploads/2023/06/TMR.mp4"></video></figure>
+<figure class="wp-block-video"><video controls src="http://localhost/wp-content/uploads/2023/06/TMR.mp4"></video></figure>
 ]]></content:encoded>
 					
 		
-		<enclosure url="/wp-content/uploads/2023/06/TMR.mp4" length="9698819" type="video/mp4" />
+		<enclosure url="http://localhost/wp-content/uploads/2023/06/TMR.mp4" length="9698819" type="video/mp4" />
 
 			</item>
 		<item>
@@ -85,7 +183,7 @@
 		<dc:creator><![CDATA[trygvrad]]></dc:creator>
 		<pubDate>Sun, 25 Sep 2022 22:16:49 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=67</guid>
+		<guid isPermaLink="false">http://localhost/?p=67</guid>
 
 					<description><![CDATA[Colorstamps is a python package hosted on github and pypi for 2d colorstamps in defined as geometric shapes in the CAM02-LCD colorspace. Documentation at readthedocs. The package is inspired by the uniform colormaps in matplotlib, which has has greatly improved the visualization of scalar scientific image data. The project contains a number of 2d colormaps... <a class="more-link" href="/colorstamps-2d-colormaps/#more-67">Continue Reading &#8594;</a>]]></description>
 										<content:encoded><![CDATA[
@@ -101,7 +199,7 @@
 
 
 
-<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="425" height="1024" src="/wp-content/uploads/2023/06/colormaps-425x1024.png" alt="" class="wp-image-68" srcset="/wp-content/uploads/2023/06/colormaps-425x1024.png 425w, /wp-content/uploads/2023/06/colormaps-125x300.png 125w, /wp-content/uploads/2023/06/colormaps-600x1445.png 600w, /wp-content/uploads/2023/06/colormaps.png 615w" sizes="(max-width: 425px) 100vw, 425px" /></figure>
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="425" height="1024" src="http://localhost/wp-content/uploads/2023/06/colormaps-425x1024.png" alt="" class="wp-image-68" srcset="/wp-content/uploads/2023/06/colormaps-425x1024.png 425w, /wp-content/uploads/2023/06/colormaps-125x300.png 125w, /wp-content/uploads/2023/06/colormaps-600x1445.png 600w, /wp-content/uploads/2023/06/colormaps.png 615w" sizes="(max-width: 425px) 100vw, 425px" /></figure>
 
 
 
@@ -113,7 +211,7 @@
 
 
 
-<figure class="wp-block-image size-full"><img decoding="async" width="455" height="208" src="/wp-content/uploads/2023/06/point_outside_colormap.webp" alt="" class="wp-image-72" srcset="/wp-content/uploads/2023/06/point_outside_colormap.webp 455w, /wp-content/uploads/2023/06/point_outside_colormap-300x137.webp 300w" sizes="(max-width: 455px) 100vw, 455px" /></figure>
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="455" height="208" src="http://localhost/wp-content/uploads/2023/06/point_outside_colormap.webp" alt="" class="wp-image-72" srcset="/wp-content/uploads/2023/06/point_outside_colormap.webp 455w, /wp-content/uploads/2023/06/point_outside_colormap-300x137.webp 300w" sizes="(max-width: 455px) 100vw, 455px" /></figure>
 
 
 
@@ -121,11 +219,11 @@
 
 
 
-<figure class="wp-block-image size-full"><img decoding="async" width="589" height="130" src="/wp-content/uploads/2023/06/eval_peak.png" alt="" class="wp-image-71" srcset="/wp-content/uploads/2023/06/eval_peak.png 589w, /wp-content/uploads/2023/06/eval_peak-300x66.png 300w" sizes="(max-width: 589px) 100vw, 589px" /></figure>
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="589" height="130" src="http://localhost/wp-content/uploads/2023/06/eval_peak.png" alt="" class="wp-image-71" srcset="/wp-content/uploads/2023/06/eval_peak.png 589w, /wp-content/uploads/2023/06/eval_peak-300x66.png 300w" sizes="(max-width: 589px) 100vw, 589px" /></figure>
 
 
 
-<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="589" height="130" src="/wp-content/uploads/2023/06/eval_hsv-1.png" alt="" class="wp-image-70" srcset="/wp-content/uploads/2023/06/eval_hsv-1.png 589w, /wp-content/uploads/2023/06/eval_hsv-1-300x66.png 300w" sizes="(max-width: 589px) 100vw, 589px" /></figure>
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="589" height="130" src="http://localhost/wp-content/uploads/2023/06/eval_hsv-1.png" alt="" class="wp-image-70" srcset="/wp-content/uploads/2023/06/eval_hsv-1.png 589w, /wp-content/uploads/2023/06/eval_hsv-1-300x66.png 300w" sizes="(max-width: 589px) 100vw, 589px" /></figure>
 ]]></content:encoded>
 					
 		
@@ -138,7 +236,7 @@
 		<dc:creator><![CDATA[trygvrad]]></dc:creator>
 		<pubDate>Fri, 23 Sep 2022 22:13:08 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=62</guid>
+		<guid isPermaLink="false">http://localhost/?p=62</guid>
 
 					<description><![CDATA[I built a model for the electric field in thin-films with interdigitated electrodes. An interactive demo is hosted at Streamlit, while the source is hosted on Github. The model is presented in A unified approach for the calculation of in-plane dielectric constant of films with interdigitated electrodes. This work builds upon a knowledge base of... <a class="more-link" href="/intedigitated-electrodes/#more-62">Continue Reading &#8594;</a>]]></description>
 										<content:encoded><![CDATA[
@@ -171,7 +269,7 @@
 		<dc:creator><![CDATA[trygvrad]]></dc:creator>
 		<pubDate>Wed, 21 Sep 2022 22:11:48 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=58</guid>
+		<guid isPermaLink="false">http://localhost/?p=58</guid>
 
 					<description><![CDATA[Mailsail is a sailing game made during a 2-week game jam in 2022.The game is fully playable in the browser at https://trygvrad.itch.io/mailsail]]></description>
 										<content:encoded><![CDATA[
@@ -197,7 +295,7 @@
 		<dc:creator><![CDATA[trygvrad]]></dc:creator>
 		<pubDate>Mon, 19 Sep 2022 22:02:57 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=53</guid>
+		<guid isPermaLink="false">http://localhost/?p=53</guid>
 
 					<description><![CDATA[Pychrysvis is a Streamlit app for making vector graphics from crystal structures (.cif files), with source on github. The you can then edit the vector graphics further in Inkscape, and make more advanced figures. like an explanation of dark-field X-ray microscopy: Diamond viewed along different axes: I prefer to work with vector graphics wherever possible,... <a class="more-link" href="/crystal-structures-as-vector-graphics/#more-53">Continue Reading &#8594;</a>]]></description>
 										<content:encoded><![CDATA[
@@ -217,7 +315,7 @@
 
 
 
-<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="642" src="/wp-content/uploads/2023/06/DFXRM_modes-1024x642.png" alt="" class="wp-image-55" srcset="/wp-content/uploads/2023/06/DFXRM_modes-1024x642.png 1024w, /wp-content/uploads/2023/06/DFXRM_modes-300x188.png 300w, /wp-content/uploads/2023/06/DFXRM_modes-768x482.png 768w, /wp-content/uploads/2023/06/DFXRM_modes-600x376.png 600w, /wp-content/uploads/2023/06/DFXRM_modes-945x593.png 945w, /wp-content/uploads/2023/06/DFXRM_modes.png 1500w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="642" src="http://localhost/wp-content/uploads/2023/06/DFXRM_modes-1024x642.png" alt="" class="wp-image-55" srcset="/wp-content/uploads/2023/06/DFXRM_modes-1024x642.png 1024w, /wp-content/uploads/2023/06/DFXRM_modes-300x188.png 300w, /wp-content/uploads/2023/06/DFXRM_modes-768x482.png 768w, /wp-content/uploads/2023/06/DFXRM_modes-600x376.png 600w, /wp-content/uploads/2023/06/DFXRM_modes-945x593.png 945w, /wp-content/uploads/2023/06/DFXRM_modes.png 1500w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -225,7 +323,7 @@
 
 
 
-<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="219" src="/wp-content/uploads/2023/06/diamond-1024x219.png" alt="" class="wp-image-56" srcset="/wp-content/uploads/2023/06/diamond-1024x219.png 1024w, /wp-content/uploads/2023/06/diamond-300x64.png 300w, /wp-content/uploads/2023/06/diamond-768x165.png 768w, /wp-content/uploads/2023/06/diamond-1536x329.png 1536w, /wp-content/uploads/2023/06/diamond-600x129.png 600w, /wp-content/uploads/2023/06/diamond-945x202.png 945w, /wp-content/uploads/2023/06/diamond.png 1867w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="219" src="http://localhost/wp-content/uploads/2023/06/diamond-1024x219.png" alt="" class="wp-image-56" srcset="/wp-content/uploads/2023/06/diamond-1024x219.png 1024w, /wp-content/uploads/2023/06/diamond-300x64.png 300w, /wp-content/uploads/2023/06/diamond-768x165.png 768w, /wp-content/uploads/2023/06/diamond-1536x329.png 1536w, /wp-content/uploads/2023/06/diamond-600x129.png 600w, /wp-content/uploads/2023/06/diamond-945x202.png 945w, /wp-content/uploads/2023/06/diamond.png 1867w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -246,7 +344,7 @@
 		<dc:creator><![CDATA[trygvrad]]></dc:creator>
 		<pubDate>Thu, 15 Sep 2022 21:55:29 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=50</guid>
+		<guid isPermaLink="false">http://localhost/?p=50</guid>
 
 					<description><![CDATA[My edf viewer is a simple program to explore .edf files from the European Synchrotron Radiation Facility (ESRF). Built using pyFAI, PySide2 and pyqtgraph, the program allows the user to have a quick look at data and check metadata, i.e. timestamp and motor positions.]]></description>
 										<content:encoded><![CDATA[
@@ -271,7 +369,7 @@
 		<dc:creator><![CDATA[trygvrad]]></dc:creator>
 		<pubDate>Wed, 14 Sep 2022 21:24:34 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=41</guid>
+		<guid isPermaLink="false">http://localhost/?p=41</guid>
 
 					<description><![CDATA[Colorshifter is an image manipulation app that for transforming the colorspace of an image in L*a*b* color coordinates. github The left/right image is the original/transformed image The histogram allows the user to edit the lightness (L*) The colormap on the right shows the a*b* plane, with a 2d histogram of the original image as white... <a class="more-link" href="/colorshifter/#more-41">Continue Reading &#8594;</a>]]></description>
 										<content:encoded><![CDATA[
@@ -303,7 +401,7 @@
 
 
 
-<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="551" src="/wp-content/uploads/2023/06/Example-0-1024x551-1.png" alt="" class="wp-image-42" srcset="/wp-content/uploads/2023/06/Example-0-1024x551-1.png 1024w, /wp-content/uploads/2023/06/Example-0-1024x551-1-300x161.png 300w, /wp-content/uploads/2023/06/Example-0-1024x551-1-768x413.png 768w, /wp-content/uploads/2023/06/Example-0-1024x551-1-600x323.png 600w, /wp-content/uploads/2023/06/Example-0-1024x551-1-945x508.png 945w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="551" src="http://localhost/wp-content/uploads/2023/06/Example-0-1024x551-1.png" alt="" class="wp-image-42" srcset="/wp-content/uploads/2023/06/Example-0-1024x551-1.png 1024w, /wp-content/uploads/2023/06/Example-0-1024x551-1-300x161.png 300w, /wp-content/uploads/2023/06/Example-0-1024x551-1-768x413.png 768w, /wp-content/uploads/2023/06/Example-0-1024x551-1-600x323.png 600w, /wp-content/uploads/2023/06/Example-0-1024x551-1-945x508.png 945w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -311,7 +409,7 @@
 
 
 
-<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="593" src="/wp-content/uploads/2023/06/example-2-1024x593-1.png" alt="" class="wp-image-43" srcset="/wp-content/uploads/2023/06/example-2-1024x593-1.png 1024w, /wp-content/uploads/2023/06/example-2-1024x593-1-300x174.png 300w, /wp-content/uploads/2023/06/example-2-1024x593-1-768x445.png 768w, /wp-content/uploads/2023/06/example-2-1024x593-1-600x347.png 600w, /wp-content/uploads/2023/06/example-2-1024x593-1-945x547.png 945w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="593" src="http://localhost/wp-content/uploads/2023/06/example-2-1024x593-1.png" alt="" class="wp-image-43" srcset="/wp-content/uploads/2023/06/example-2-1024x593-1.png 1024w, /wp-content/uploads/2023/06/example-2-1024x593-1-300x174.png 300w, /wp-content/uploads/2023/06/example-2-1024x593-1-768x445.png 768w, /wp-content/uploads/2023/06/example-2-1024x593-1-600x347.png 600w, /wp-content/uploads/2023/06/example-2-1024x593-1-945x547.png 945w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 
 
 
@@ -319,7 +417,7 @@
 
 
 
-<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="595" src="/wp-content/uploads/2023/06/example-1-1-1024x595-1.png" alt="" class="wp-image-44" srcset="/wp-content/uploads/2023/06/example-1-1-1024x595-1.png 1024w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-300x174.png 300w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-768x446.png 768w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-600x349.png 600w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-945x549.png 945w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="595" src="http://localhost/wp-content/uploads/2023/06/example-1-1-1024x595-1.png" alt="" class="wp-image-44" srcset="/wp-content/uploads/2023/06/example-1-1-1024x595-1.png 1024w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-300x174.png 300w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-768x446.png 768w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-600x349.png 600w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-945x549.png 945w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 ]]></content:encoded>
 					
 		
@@ -332,7 +430,7 @@
 		<dc:creator><![CDATA[trygvrad]]></dc:creator>
 		<pubDate>Wed, 14 Sep 2022 21:11:25 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">/?p=33</guid>
+		<guid isPermaLink="false">http://localhost/?p=33</guid>
 
 					<description><![CDATA[LUT combiner (github) is a small desktop application for overlaying different microscopy images with different lookup tables (LUTs) into a color image. The program supports 2 or 3 images. The program was made at the request of a friend and is built using pyqtgraph and 3-color LUTs from ChrisLUTs]]></description>
 										<content:encoded><![CDATA[
@@ -340,7 +438,7 @@
 
 
 
-<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="910" height="539" src="/wp-content/uploads/2022/09/lut_combiner-2.png" alt="" class="wp-image-37" srcset="/wp-content/uploads/2022/09/lut_combiner-2.png 910w, /wp-content/uploads/2022/09/lut_combiner-2-300x178.png 300w, /wp-content/uploads/2022/09/lut_combiner-2-768x455.png 768w, /wp-content/uploads/2022/09/lut_combiner-2-600x355.png 600w" sizes="(max-width: 910px) 100vw, 910px" /></figure>
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="910" height="539" src="http://localhost/wp-content/uploads/2022/09/lut_combiner-2.png" alt="" class="wp-image-37" srcset="/wp-content/uploads/2022/09/lut_combiner-2.png 910w, /wp-content/uploads/2022/09/lut_combiner-2-300x178.png 300w, /wp-content/uploads/2022/09/lut_combiner-2-768x455.png 768w, /wp-content/uploads/2022/09/lut_combiner-2-600x355.png 600w" sizes="(max-width: 910px) 100vw, 910px" /></figure>
 
 
 
