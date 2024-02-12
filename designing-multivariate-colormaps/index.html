@@ -102,11 +102,17 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 
 			
 
-	<article id="post-107" class="post-107 post type-post status-publish format-standard hentry category-uncategorized clear">
+	<article id="post-107" class="post-107 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized clear">
 
-		<header class="post-header"><h1 class="post-title entry-title"><a href="/designing-multivariate-colormaps/" rel="bookmark">Designing multivariate colormaps</a></h1></header>			<div class="post-content clear">
+		<header class="post-header"><h1 class="post-title entry-title"><a href="/designing-multivariate-colormaps/" rel="bookmark">Designing multivariate colormaps</a></h1></header>			<div class="featured-media">
+				<img width="923" height="501" src="/wp-content/uploads/2024/02/header_img.png" class="attachment-baskerville-2-post-image size-baskerville-2-post-image wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="/wp-content/uploads/2024/02/header_img.png 923w, /wp-content/uploads/2024/02/header_img-300x163.png 300w, /wp-content/uploads/2024/02/header_img-768x417.png 768w, /wp-content/uploads/2024/02/header_img-600x326.png 600w" sizes="(max-width: 923px) 100vw, 923px">			</div> <!-- /featured-media -->
+					<div class="post-content clear">
 				
 <p>Multivariate colormaps are seeing use in a number of domains that rely upon python ecosystem. I work with dark-field X-ray microscopy, which is one such domain, but there are numerous others, such as astronomy, polarization microscopy etc. While each domain may have dedicated tooling, <a href="https://gitlab.esrf.fr/XRD/darfix">darfix</a>, <a href="https://www.astropy.org/">astropy</a>, <a href="https://xrayutilities.sourceforge.io/">xrayutilities</a> etc, this tooling is built upon the scientific python stack, including <a href="https://numpy.org/">numpy</a>, <a href="https://scipy.org/">scipy</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://matplotlib.org/">matplotlib</a>, <a href="https://plotly.com/">plotly</a>, etc. Since these domains share common challenges regarding multivariate colormaps, it would be ideal to handle these challenges upstream (i.e. in matplotlib, plotly, etc.) rather than in the domain-specific packages. In addition to the technical implementation, the design criteria for multivariate colormaps must be explored. </p>
+
+
+
+<span id="more-107"></span>
 
 
 
@@ -130,7 +136,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 
 
 
-<figure class="wp-block-image size-full is-resized"><img fetchpriority="high" decoding="async" width="1018" height="513" src="/wp-content/uploads/2024/02/axes-1.png" alt="" class="wp-image-134" style="width:839px;height:auto" srcset="/wp-content/uploads/2024/02/axes-1.png 1018w, /wp-content/uploads/2024/02/axes-1-300x151.png 300w, /wp-content/uploads/2024/02/axes-1-768x387.png 768w, /wp-content/uploads/2024/02/axes-1-600x302.png 600w" sizes="(max-width: 1018px) 100vw, 1018px"></figure>
+<figure class="wp-block-image size-full is-resized"><img decoding="async" width="1018" height="513" src="/wp-content/uploads/2024/02/axes-1.png" alt="" class="wp-image-134" style="width:839px;height:auto" srcset="/wp-content/uploads/2024/02/axes-1.png 1018w, /wp-content/uploads/2024/02/axes-1-300x151.png 300w, /wp-content/uploads/2024/02/axes-1-768x387.png 768w, /wp-content/uploads/2024/02/axes-1-600x302.png 600w" sizes="(max-width: 1018px) 100vw, 1018px"></figure>
 
 
 
@@ -142,8 +148,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 
 
 
-<img decoding="async" src=":8000/cmaps.svg" style="width:820px;">
-<iframe src="https://trygvrad.github.io/plotly_2D_colormaps/3D_orangeBlue.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
+<img decoding="async" src="https://trygvrad.github.io/plotly_2D_colormaps/cmaps.svg" style="width:820px;">
+<iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/3D_orangeBlue.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
 <iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/3D_cut.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
 <iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/3D_barrel.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
 <iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/3D_peak.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
@@ -155,7 +161,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 
 
 <iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/orange_blue_Lab.html" height="300" width="285" frameborder="0" allow="fullscreen" scrolling="no"></iframe>
-<img decoding="async" src=":8000/defined_in_mod.svg" style="height:300px;">
+<img decoding="async" src="https://trygvrad.github.io/plotly_2D_colormaps/defined_in_mod.svg" style="height:300px;">
 <iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/orange_blue_RGB.html" height="300" width="285" frameborder="0" allow="fullscreen" scrolling="no"></iframe>
 
 
@@ -181,10 +187,6 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 
 
 <p>The rotation of the colormap is therefore of critical importance for accommodating those with common forms of colorblindness. <br><br></p>
-
-
-
-<p></p>
 			</div>
 <!--/.post-content-->
 		

@@ -12,7 +12,7 @@
 	<atom:link href="/author/trygvrad/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Mon, 12 Feb 2024 12:52:49 +0000</lastBuildDate>
+	<lastBuildDate>Mon, 12 Feb 2024 13:23:41 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -32,6 +32,10 @@
 					<description><![CDATA[Multivariate colormaps are seeing use in a number of domains that rely upon python ecosystem. I work with dark-field X-ray microscopy, which is one such domain, but there are numerous others, such as astronomy, polarization microscopy etc. While each domain may have dedicated tooling, darfix, astropy, xrayutilities etc, this tooling is built upon the scientific... <a class="more-link" href="/designing-multivariate-colormaps/#more-107">Continue Reading &#8594;</a>]]></description>
 										<content:encoded><![CDATA[
 <p>Multivariate colormaps are seeing use in a number of domains that rely upon python ecosystem. I work with dark-field X-ray microscopy, which is one such domain, but there are numerous others, such as astronomy, polarization microscopy etc. While each domain may have dedicated tooling, <a href="https://gitlab.esrf.fr/XRD/darfix">darfix</a>, <a href="https://www.astropy.org/">astropy</a>, <a href="https://xrayutilities.sourceforge.io/">xrayutilities</a> etc, this tooling is built upon the scientific python stack, including <a href="https://numpy.org/">numpy</a>, <a href="https://scipy.org/">scipy</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://matplotlib.org/">matplotlib</a>, <a href="https://plotly.com/">plotly</a>, etc. Since these domains share common challenges regarding multivariate colormaps, it would be ideal to handle these challenges upstream (i.e. in matplotlib, plotly, etc.) rather than in the domain-specific packages. In addition to the technical implementation, the design criteria for multivariate colormaps must be explored. </p>
+
+
+
+<span id="more-107"></span>
 
 
 
@@ -67,7 +71,7 @@
 
 
 
-<img decoding="async" src=":8000/cmaps.svg" style="width:820px;">
+<img decoding="async" src="https://trygvrad.github.io/plotly_2D_colormaps/cmaps.svg" style="width:820px;">
 <iframe src="https://trygvrad.github.io/plotly_2D_colormaps/3D_orangeBlue.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
 <iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/3D_cut.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
 <iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/3D_barrel.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
@@ -80,7 +84,7 @@
 
 
 <iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/orange_blue_Lab.html" height="300" width="285" frameborder="0" allow="fullscreen" scrolling="no" ></iframe>
-<img decoding="async" src=":8000/defined_in_mod.svg" style="height:300px;">
+<img decoding="async" src="https://trygvrad.github.io/plotly_2D_colormaps/defined_in_mod.svg" style="height:300px;">
 <iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/orange_blue_RGB.html" height="300" width="285" frameborder="0" allow="fullscreen" scrolling="no" ></iframe>
 
 
@@ -106,10 +110,6 @@
 
 
 <p>The rotation of the colormap is therefore of critical importance for accommodating those with common forms of colorblindness. <br><br></p>
-
-
-
-<p></p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/designing-multivariate-colormaps/feed/</wfw:commentRss>
