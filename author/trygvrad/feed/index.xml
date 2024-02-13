@@ -12,7 +12,7 @@
 	<atom:link href="/author/trygvrad/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Tue, 13 Feb 2024 08:30:39 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 13 Feb 2024 09:07:09 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -145,11 +145,23 @@
 
 
 
-<p><a href="https://colorspacious.readthedocs.io/en/latest/index.html">colorspacious</a> to convert between colorspaces and simulated colorblindness<br><a href="https://plotly.com/">plotly</a> to make 3d figures<br><a href="https://matplotlib.org/">matplotlib</a> to make 2d figures<br>The colormaps were originally made for <a href="https://colorstamps.readthedocs.io/en/latest/index.html">colorstamps</a><br></p>
+<p><a href="https://colorspacious.readthedocs.io/en/latest/index.html">colorspacious</a> to convert between colorspaces and simulated colorblindness<br><a href="https://plotly.com/">plotly</a> to make 3d figures<br><a href="https://matplotlib.org/">matplotlib</a> to make 2d figures<br>The colormaps were originally made for <a href="https://colorstamps.readthedocs.io/en/latest/index.html">colorstamps</a></p>
 
 
 
-<p><br><br></p>
+<p class="has-large-font-size">Other resources:</p>
+
+
+
+<p class="has-small-font-size">Bernard, Jürgen, et al. &#8220;A survey and task-based quality assessment of static 2D colormaps.&#8221; <em>Visualization and Data Analysis 2015</em>. Vol. 9397. SPIE, 2015.</p>
+
+
+
+<p class="has-small-font-size">Strode, Georgianna, et al. &#8220;Operationalizing Trumbo’s principles of bivariate choropleth map design.&#8221; <em>Cartographic perspectives</em> 94 (2019): 5-24.</p>
+
+
+
+<p class="has-small-font-size">Kruse, Andrew W., et al. &#8220;User study comparing linearity and orthogonalization for polarimetric visualizations.&#8221; <em>IEEE Access</em> 10 (2022): 28308-28321.<br></p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/designing-multivariate-colormaps/feed/</wfw:commentRss>
