@@ -12,7 +12,7 @@
 	<atom:link href="/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Mon, 12 Feb 2024 13:23:41 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 13 Feb 2024 08:30:39 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -63,7 +63,7 @@
 
 
 
-<p>These most relevant categories, are shown as 2D planes in 3D Lab space above.</p>
+<p>These most relevant categories, are shown as 2D planes in 3D <strong>L*a*b*</strong> space above.</p>
 
 
 
@@ -79,7 +79,7 @@
 
 
 
-<p>Note that defining colormaps in Lab-space limits how much of the color gamut we can utilize. Colormaps defined in sRGB space provide a better utilization of the color gamut. Consider the following blue-orange bi-sequential colormaps:</p>
+<p>Note that defining colormaps in <strong>L*a*b*</strong>-space limits how much of the color gamut we can utilize. Colormaps defined in sRGB space provide a better utilization of the color gamut. Consider the following blue-orange bi-sequential colormaps:</p>
 
 
 
@@ -93,11 +93,31 @@
 
 
 
+<p>Additional colormaps can be generated using the same design principles:</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="750" src="/wp-content/uploads/2024/02/cmaps2-1024x750.png" alt="" class="wp-image-152" srcset="/wp-content/uploads/2024/02/cmaps2-1024x750.png 1024w, /wp-content/uploads/2024/02/cmaps2-300x220.png 300w, /wp-content/uploads/2024/02/cmaps2-768x563.png 768w, /wp-content/uploads/2024/02/cmaps2-600x440.png 600w, /wp-content/uploads/2024/02/cmaps2.png 1250w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>The circular colormaps are useful for applications where the data has rotational symmetry. </p>
+
+
+
+<p class="has-large-font-size">3D colormaps &#8211; <strong>alpha</strong>, <strong>a*</strong> and <strong>b*</strong></p>
+
+
+
+<p>One can design a 3D colormap based on the three axes <strong>L*</strong>, <strong>a*</strong> and <strong>b*</strong>. On a black background <strong>L*</strong> can be replaced by an <strong>alpha</strong> channel, if the colormap is constant in <strong>L*</strong>. The colormaps <em>&#8216;flat&#8217;</em> and <em>&#8216;disk&#8217;</em> (above) are designed to be used in this way.</p>
+
+
+
 <p class="has-large-font-size">Adapting for colorblindness</p>
 
 
 
-<p>It is not possible to fully accommodate the various kinds of colorblindness in multi-dimensional colormaps. However, it is worth noting all the common forms of color-blindness affect primarily the <strong>a</strong>* (red-green) axis in Lab colorspace. Thus, when we design colormaps by slicing Lab space, we should preferentially slice along the <strong>b</strong>* (blue-yellow) axis, as is done above for the colormaps &#8216;orangeBlue&#8217; and &#8216;cut&#8217;. However, when making use of a the <strong>hue</strong> in a cyclic colormap, this is not possible. </p>
+<p>It is not possible to fully accommodate the various kinds of colorblindness in multi-dimensional colormaps. However, it is worth noting all the common forms of color-blindness affect primarily the <strong>a</strong>* (red-green) axis in <strong>L*a*b*</strong> colorspace. Thus, when we design colormaps by slicing <strong>L*a*b*</strong> space, we should preferentially slice along the <strong>b</strong>* (blue-yellow) axis, as is done above for the colormaps &#8216;orangeBlue&#8217; and &#8216;cut&#8217;. However, when making use of a the <strong>hue</strong> in a cyclic colormap, this is not possible. </p>
 
 
 
@@ -109,7 +129,27 @@
 
 
 
-<p>The rotation of the colormap is therefore of critical importance for accommodating those with common forms of colorblindness. <br><br></p>
+<p>The rotation of the colormap is therefore of critical importance for accommodating those with common forms of colorblindness. </p>
+
+
+
+<p>For reference, the above colormaps are shown below as they appear for someone with deuteranopia (unable to perceive ‘green’ light – the most common form of color blindness).</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="750" src="/wp-content/uploads/2024/02/cmaps2CB-1024x750.png" alt="" class="wp-image-153" srcset="/wp-content/uploads/2024/02/cmaps2CB-1024x750.png 1024w, /wp-content/uploads/2024/02/cmaps2CB-300x220.png 300w, /wp-content/uploads/2024/02/cmaps2CB-768x563.png 768w, /wp-content/uploads/2024/02/cmaps2CB-600x440.png 600w, /wp-content/uploads/2024/02/cmaps2CB.png 1250w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p class="has-large-font-size">Tools used:</p>
+
+
+
+<p><a href="https://colorspacious.readthedocs.io/en/latest/index.html">colorspacious</a> to convert between colorspaces and simulated colorblindness<br><a href="https://plotly.com/">plotly</a> to make 3d figures<br><a href="https://matplotlib.org/">matplotlib</a> to make 2d figures<br>The colormaps were originally made for <a href="https://colorstamps.readthedocs.io/en/latest/index.html">colorstamps</a><br></p>
+
+
+
+<p><br><br></p>
 ]]></content:encoded>
 					
 					<wfw:commentRss>/designing-multivariate-colormaps/feed/</wfw:commentRss>
