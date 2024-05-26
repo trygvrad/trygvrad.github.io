@@ -12,14 +12,67 @@
 	<atom:link href="/category/uncategorized/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Tue, 13 Feb 2024 09:07:09 +0000</lastBuildDate>
+	<lastBuildDate>Sun, 26 May 2024 15:11:58 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.4.3</generator>
+	<generator>https://wordpress.org/?v=6.5.3</generator>
 	<item>
+		<title>Google SoC &#8211; Bivariate colormaps</title>
+		<link>/google-soc-bivariate-colormaps/</link>
+		
+		<dc:creator><![CDATA[trygvrad]]></dc:creator>
+		<pubDate>Sat, 25 May 2024 13:26:51 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">/?p=162</guid>
+
+					<description><![CDATA[I have been accepted to Google Summer of Code!Over the summer I will be working for Numfocus on Bivariate colormaps for matplotlib a feature that has been requested for a long time. If you are not familiar with bivariate color maps, they come in handy to visualize complex numbers, here exemplified by the Mandelbrot set:... <a class="more-link" href="/google-soc-bivariate-colormaps/#more-162">Continue Reading &#8594;</a>]]></description>
+										<content:encoded><![CDATA[
+<p>I have been <a href="https://summerofcode.withgoogle.com/programs/2024/projects/oEBt7vSe" data-type="link" data-id="https://summerofcode.withgoogle.com/programs/2024/projects/oEBt7vSe">accepted to Google Summer of Code</a>!<br>Over the summer I will be working for Numfocus on Bivariate colormaps for matplotlib a <a href="https://github.com/matplotlib/matplotlib/issues/14168">feature that has been requested for a long time</a>.</p>
+
+
+
+<p><br>If you are not familiar with bivariate color maps, they come in handy to visualize complex numbers, here exemplified by the <a href="https://en.wikipedia.org/wiki/Mandelbrot_set">Mandelbrot</a> set:</p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img fetchpriority="high" decoding="async" width="879" height="578" src="/wp-content/uploads/2024/05/image-4.png" alt="" class="wp-image-167" style="width:588px;height:auto" srcset="/wp-content/uploads/2024/05/image-4.png 879w, /wp-content/uploads/2024/05/image-4-300x197.png 300w, /wp-content/uploads/2024/05/image-4-768x505.png 768w, /wp-content/uploads/2024/05/image-4-600x395.png 600w" sizes="(max-width: 879px) 100vw, 879px" /></figure>
+
+
+
+<span id="more-162"></span>
+
+
+
+<p>But bivariate colormaps are not limited to the number plane, and have a number of uses in different disciplines. Where the above graph shows correlated data (complex numbers), the figure below uses a bivariate colormap to visualize two independent datasets, GDP per capita, and growth (<a href="https://www.bea.gov/data/gdp/gdp-state">data source</a>):</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="640" height="350" src="/wp-content/uploads/2024/05/image-1.png" alt="" class="wp-image-164" srcset="/wp-content/uploads/2024/05/image-1.png 640w, /wp-content/uploads/2024/05/image-1-300x164.png 300w, /wp-content/uploads/2024/05/image-1-600x328.png 600w" sizes="(max-width: 640px) 100vw, 640px" /></figure>
+
+
+
+<p>Implementing bivariate colormaps in matplotlib requires adding functionality deep in the class hierarchy. By making these changes, it will be easy to also implement multivariate colormaps for visualizing more than two images/datasets together, as with the cells shown below (<a href="https://zenodo.org/record/3246903">data source</a>):</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="491" height="342" src="/wp-content/uploads/2024/05/image.png" alt="" class="wp-image-163" srcset="/wp-content/uploads/2024/05/image.png 491w, /wp-content/uploads/2024/05/image-300x209.png 300w" sizes="(max-width: 491px) 100vw, 491px" /></figure>
+
+
+
+<p>There is a lot of work to be done, both on the implementation side of things, and for designing suitable colormaps. Check out the development <a href="https://github.com/trygvrad/matplotlib/tree/multivariate_colormaps_take2">branch</a> if you want to compare the changes yourself!</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="676" height="649" src="/wp-content/uploads/2024/05/image-2.png" alt="" class="wp-image-165" srcset="/wp-content/uploads/2024/05/image-2.png 676w, /wp-content/uploads/2024/05/image-2-300x288.png 300w, /wp-content/uploads/2024/05/image-2-600x576.png 600w" sizes="(max-width: 676px) 100vw, 676px" /></figure>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
 		<title>Designing multivariate colormaps</title>
 		<link>/designing-multivariate-colormaps/</link>
 					<comments>/designing-multivariate-colormaps/#respond</comments>
@@ -47,7 +100,7 @@
 
 
 
-<iframe src="https://trygvrad.github.io/plotly_2D_colormaps/fig.html" height="520" width="420" frameborder="0" allow="fullscreen"></iframe>
+<iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/fig.html" height="520" width="420" frameborder="0" allow="fullscreen"></iframe>
 
 
 
@@ -59,7 +112,7 @@
 
 
 
-<figure class="wp-block-image size-full is-resized"><img fetchpriority="high" decoding="async" width="1018" height="513" src="/wp-content/uploads/2024/02/axes-1.png" alt="" class="wp-image-134" style="width:839px;height:auto" srcset="/wp-content/uploads/2024/02/axes-1.png 1018w, /wp-content/uploads/2024/02/axes-1-300x151.png 300w, /wp-content/uploads/2024/02/axes-1-768x387.png 768w, /wp-content/uploads/2024/02/axes-1-600x302.png 600w" sizes="(max-width: 1018px) 100vw, 1018px" /></figure>
+<figure class="wp-block-image size-full is-resized"><img loading="lazy" decoding="async" width="1018" height="513" src="/wp-content/uploads/2024/02/axes-1.png" alt="" class="wp-image-134" style="width:839px;height:auto" srcset="/wp-content/uploads/2024/02/axes-1.png 1018w, /wp-content/uploads/2024/02/axes-1-300x151.png 300w, /wp-content/uploads/2024/02/axes-1-768x387.png 768w, /wp-content/uploads/2024/02/axes-1-600x302.png 600w" sizes="(max-width: 1018px) 100vw, 1018px" /></figure>
 
 
 
@@ -72,7 +125,7 @@
 
 
 <img decoding="async" src="https://trygvrad.github.io/plotly_2D_colormaps/cmaps.svg" style="width:820px;">
-<iframe src="https://trygvrad.github.io/plotly_2D_colormaps/3D_orangeBlue.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
+<iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/3D_orangeBlue.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
 <iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/3D_cut.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
 <iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/3D_barrel.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
 <iframe loading="lazy" src="https://trygvrad.github.io/plotly_2D_colormaps/3D_peak.html" height="200" width="185" frameborder="0" allow="fullscreen"></iframe>
@@ -470,35 +523,6 @@
 
 
 <figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="595" src="http://localhost/wp-content/uploads/2023/06/example-1-1-1024x595-1.png" alt="" class="wp-image-44" srcset="/wp-content/uploads/2023/06/example-1-1-1024x595-1.png 1024w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-300x174.png 300w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-768x446.png 768w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-600x349.png 600w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-945x549.png 945w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
-]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>LUT combiner</title>
-		<link>/lut-combiner/</link>
-		
-		<dc:creator><![CDATA[trygvrad]]></dc:creator>
-		<pubDate>Wed, 14 Sep 2022 21:11:25 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">http://localhost/?p=33</guid>
-
-					<description><![CDATA[LUT combiner (github) is a small desktop application for overlaying different microscopy images with different lookup tables (LUTs) into a color image. The program supports 2 or 3 images. The program was made at the request of a friend and is built using pyqtgraph and 3-color LUTs from ChrisLUTs]]></description>
-										<content:encoded><![CDATA[
-<span id="more-33"></span>
-
-
-
-<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="910" height="539" src="http://localhost/wp-content/uploads/2022/09/lut_combiner-2.png" alt="" class="wp-image-37" srcset="/wp-content/uploads/2022/09/lut_combiner-2.png 910w, /wp-content/uploads/2022/09/lut_combiner-2-300x178.png 300w, /wp-content/uploads/2022/09/lut_combiner-2-768x455.png 768w, /wp-content/uploads/2022/09/lut_combiner-2-600x355.png 600w" sizes="(max-width: 910px) 100vw, 910px" /></figure>
-
-
-
-<p>LUT combiner (<a href="https://github.com/trygvrad/lut_combiner">github</a>) is a small desktop application for overlaying different microscopy images with different lookup tables (LUTs) into a color image. The program supports 2 or 3 images.</p>
-
-
-
-<p>The program was made at the request of a friend and is built using pyqtgraph and 3-color LUTs from <a href="https://github.com/cleterrier/ChrisLUTs">ChrisLUTs</a></p>
 ]]></content:encoded>
 					
 		
