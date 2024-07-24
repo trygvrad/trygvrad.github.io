@@ -12,14 +12,448 @@
 	<atom:link href="/category/uncategorized/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Sun, 26 May 2024 15:11:58 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 24 Jul 2024 11:17:29 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.5.3</generator>
+	<generator>https://wordpress.org/?v=6.6.1</generator>
 	<item>
+		<title>Multivariate colormaps for n dimensions</title>
+		<link>/multivariate-colormaps-for-n-dimensions/</link>
+		
+		<dc:creator><![CDATA[trygvrad]]></dc:creator>
+		<pubDate>Wed, 24 Jul 2024 10:49:32 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">/?p=159</guid>
+
+					<description><![CDATA[Much work has been done in the last decade related to 1-dimensional colormaps (see for eaxmple Peter Kovesis paper and Nathaniel Smith and Stéfan van der Walts talk (2015)). This post follows my previous post on 2D colormaps, and many of the design principles will be the same. However, with n ≥ 3, it quickly... <a class="more-link" href="/multivariate-colormaps-for-n-dimensions/#more-159">Continue Reading &#8594;</a>]]></description>
+										<content:encoded><![CDATA[
+<p>Much work has been done in the last decade related to 1-dimensional colormaps (see for eaxmple <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Kovesi,+P">Peter Kovesis paper</a> and <a href="https://www.youtube.com/watch?v=xAoljeRJ3lU">Nathaniel Smith and Stéfan van der Walts talk</a> (2015)).</p>
+
+
+
+<p>This post follows my previous post on<a href="../designing-2D-colormaps"> 2D colormaps</a>, and many of the design principles will be the same. However, with n ≥ 3, it quickly becomes unfeasible to create a full lookup table. With n = 3 channels and 256 values in each channel, the lookup table would be a matrix of 256^3 elements, likely much larger than the image the colormap is applied to. Instead, n independent 1D lookup tables are created, and the resulting colors are then combined.</p>
+
+
+
+<span id="more-159"></span>
+
+
+
+<p>The simplest approach is to assign one color channel (R, G, B) to each channel in the image; in the below image the same data is shown mapped to (R, G, B) and (G, B, R): <a href="ttps://arxiv.org/abs/1812.10366" data-type="link" data-id="ttps://arxiv.org/abs/1812.10366">[data source]</a></p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img fetchpriority="high" decoding="async" width="718" height="303" src="/wp-content/uploads/2024/07/image.png" alt="" class="wp-image-180" srcset="/wp-content/uploads/2024/07/image.png 718w, /wp-content/uploads/2024/07/image-300x127.png 300w, /wp-content/uploads/2024/07/image-600x253.png 600w" sizes="(max-width: 718px) 100vw, 718px" /></figure></div>
+
+
+<p>Both images above display the same data, with the same normalization, but by swapping the color different aspects are highlighted. The green channel has higher perceptual lightness and saturation, and the features of the green channel are therefore highlighted. <br>The lightness and saturation of the R, G and B channels can be visualized by displaying the three channels in a perceptually uniform colorspace. </p>
+
+
+
+<iframe src="https://trygvrad.github.io/plotly_multivar_colormaps/RGB_multivar.html" height="520" width="420" frameborder="0" allow="fullscreen"></iframe>
+
+
+
+<p>We can define the following figures of merit for multivariate colormaps:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Each channel should be perceptually uniform.</li>
+
+
+
+<li>All channels should have similar lightness and saturation.</li>
+
+
+
+<li>The perceptual distance between the channels should be maximized.</li>
+</ol>
+
+
+
+<p>Since there are perceptually uniform colorspaces available in literature (for example CAM02-LCD <a href="https://doi.org/10.1002/col.20227" data-type="link" data-id="https://doi.org/10.1002/col.20227">Luo et al. (2006)</a>), we can use these to design colormaps that match the figures of merit above:</p>
+
+
+
+<iframe src="https://trygvrad.github.io/plotly_multivar_colormaps/new_RGB_multivar.html" height="520" width="420" frameborder="0" allow="fullscreen"></iframe>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="718" height="303" src="/wp-content/uploads/2024/07/image-1.png" alt="" class="wp-image-181" srcset="/wp-content/uploads/2024/07/image-1.png 718w, /wp-content/uploads/2024/07/image-1-300x127.png 300w, /wp-content/uploads/2024/07/image-1-600x253.png 600w" sizes="(max-width: 718px) 100vw, 718px" /></figure></div>
+
+
+<p>The above figure show the same data again but this time visualized with the newly generated colormaps. Again, they are shown with two different assignments to the three color channels. There are still perceptual differences, but there should be no features in the left image that are not visible in the right image. (Note that they will appear different to those that are colorblind, or if printed in black and white &#8211; more on this later.)</p>
+
+
+
+<h2 class="wp-block-heading">Combining colors</h2>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img loading="lazy" decoding="async" width="696" height="252" src="/wp-content/uploads/2024/07/image-38.png" alt="" class="wp-image-241" style="width:838px;height:auto" srcset="/wp-content/uploads/2024/07/image-38.png 696w, /wp-content/uploads/2024/07/image-38-300x109.png 300w, /wp-content/uploads/2024/07/image-38-600x217.png 600w" sizes="(max-width: 696px) 100vw, 696px" /></figure>
+
+
+
+<p>When the three channels are combined, they may produce colors that do not exist in any of the individual channels. In the above example, the colors are added, but there are a other possible <a href="https://www.clipstudio.net/how-to-draw/archives/154182">blending modes</a>:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Additive: R = R₁ + R₂ + R₃             ← example above</strong></li>
+
+
+
+<li>Lighten:  R = max(R₁, R₂, R₃)</li>
+
+
+
+<li>Darken:   R = min(R₁, R₂, R₃)</li>
+
+
+
+<li>Multiply: R = R₁ * R₂ * R₃</li>
+
+
+
+<li>Screen:   R = (R₁⁻¹ * R₂⁻¹ * R₃⁻¹)⁻¹</li>
+
+
+
+<li>&#8230;</li>
+</ul>
+
+
+
+<p>as well as more exotic ways to work within colorspace:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Mixing in perceptual uniform space</li>
+
+
+
+<li>Non-linear mixing, e.g.  R = √(R₁² + R₂² + R₃²)</li>
+
+
+
+<li>Choosing the colorbar corresponding to the highest input value, ignoring the others </li>
+
+
+
+<li>&#8230;</li>
+</ul>
+
+
+
+<p>In terms of perceptual uniformity, it would be best to combine the colors in perceptually uniform colorspace, but there are pragmatic reasons to instead combine colors sRGB:</p>
+
+
+
+<ul class="wp-block-list">
+<li>The conversion sRGB ←→ CAM02-LCD is numerically costly</li>
+
+
+
+<li>The conversion sRGB ←→ CAM02-LCD is numerically unstable</li>
+
+
+
+<li>Combining colors in sRGB space gives acceptable results </li>
+</ul>
+
+
+
+<p>It is therefore reasonable to design colormaps in a perceptually uniform space, but combine them in sRGB. However, we must be carefull to check that that this does not produce any unwanted artifacts when the colormaps are combined. This is most acute for n = 3 channels, where it is possible to create colormaps such that each color in the output image stems from a unique combination of input.</p>
+
+
+
+<h2 class="wp-block-heading">Designing colormaps with n = 3 channels</h2>
+
+
+
+<p>With n=3 channels, we can think of colorspace as a cube, with each channel representing one of the axes. If we are working with dense data, such that the input spans the full 3D volume of the cube, then we can add the following two figures of merit:</p>
+
+
+
+<ol start="4" class="wp-block-list">
+<li class="ol {counter-reset: start 9}">Equal mixing of the components provides a grayscale</li>
+
+
+
+<li>No combination leaves sRGB space</li>
+</ol>
+
+
+
+<p>We can visualize the colormaps above as follows:</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="262" height="263" src="/wp-content/uploads/2024/07/image-3-edited.png" alt="" class="wp-image-187" style="width:259px;height:auto" srcset="/wp-content/uploads/2024/07/image-3-edited.png 262w, /wp-content/uploads/2024/07/image-3-edited-150x150.png 150w" sizes="(max-width: 262px) 100vw, 262px" /></figure></div>
+
+
+<p>By visual inspection we can see that this is relatively uniform around the origin (black), but non-uniform around the other extreme (white), where it wants to leave the sRGB colorspace. The same can be seen in 3D, where it also becomes apparent that the &#8220;greyscale&#8221; has a weak tint.</p>
+
+
+
+<iframe loading="lazy" src="https://trygvrad.github.io/plotly_multivar_colormaps/new_RGB_multivar2.html" height="520" width="420" frameborder="0" allow="fullscreen"></iframe>
+
+
+
+<p>We can adjust the colormap by reducing the maximum saturation and lightness of each channel, this to make sure the entire colormap fits in sRGB space. In the figure below the origin is fixed at (0, 0, 0) in sRGB space, and the maximum at (1, 1, 1). The grayscale has also been adjusted by minor shifts to the individual channels, so that the greyscale follows the sRGB greyscale.</p>
+
+
+
+<iframe loading="lazy" src="https://trygvrad.github.io/plotly_multivar_colormaps/new_RGB_multivar3.html" height="520" width="420" frameborder="0" allow="fullscreen"></iframe>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="563" height="273" src="/wp-content/uploads/2024/07/image-4.png" alt="" class="wp-image-188" srcset="/wp-content/uploads/2024/07/image-4.png 563w, /wp-content/uploads/2024/07/image-4-300x145.png 300w" sizes="(max-width: 563px) 100vw, 563px" /></figure></div>
+
+
+<p>This colormap fulfills all the figures of merit listed above, and will work for any 3-channel dataset. This particular example has sparse data (most pixels are only non-zero in one channel) and the resulting image therefore appears a little drab.</p>
+
+
+
+<h2 class="wp-block-heading">Colorblindness</h2>
+
+
+
+<p>Around 5-10% of the male population has some form of red-green colorblindness. For many of them, the colormap above looks as follows:</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="554" height="273" src="/wp-content/uploads/2024/07/image-5.png" alt="" class="wp-image-189" srcset="/wp-content/uploads/2024/07/image-5.png 554w, /wp-content/uploads/2024/07/image-5-300x148.png 300w" sizes="(max-width: 554px) 100vw, 554px" /></figure></div>
+
+
+<p>Note how the green and red channels appear almost identical. This is not an accident, but the result of a choice made when making the colormaps. The blue channel follows <em>negative b</em> (blue) closely in <em>L*a*b*</em> colorspace, and as a result the green and red channels have a very similar value of <em>positive b</em> (yellow). (red-green colorblindness is in practice the abscence of the <em>a</em> axis in <em>L*a*b*</em> colorspace).</p>
+
+
+
+<p>It is impossible to accommodate colorblindness completely in a 3-channel image. However, the choice made above was <em>particularly</em> bad. A better choice is to fix one of the channels to be along the <em>a</em> axis. The resulting colormap will then also have three distinct channels for those that are colorblind (grey, yellow, blue). </p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="554" height="273" src="/wp-content/uploads/2024/07/image-8.png" alt="" class="wp-image-192" srcset="/wp-content/uploads/2024/07/image-8.png 554w, /wp-content/uploads/2024/07/image-8-300x148.png 300w" sizes="(max-width: 554px) 100vw, 554px" /></figure></div>
+
+
+<p>This is by no means perfect, but it is clearly a better choice. <br>For those of use who are not colorblind, the colormap above looks as follows:</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="554" height="273" src="/wp-content/uploads/2024/07/image-9.png" alt="" class="wp-image-193" srcset="/wp-content/uploads/2024/07/image-9.png 554w, /wp-content/uploads/2024/07/image-9-300x148.png 300w" sizes="(max-width: 554px) 100vw, 554px" /></figure></div>
+
+
+<iframe loading="lazy" src="https://trygvrad.github.io/plotly_multivar_colormaps/new_RGB_multivar4.html" height="520" width="420" frameborder="0" allow="fullscreen"></iframe>
+
+
+
+<h2 class="wp-block-heading">The problem with black</h2>
+
+
+
+<p>When discretized to 12 steps, the colormaps look like this:</p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img loading="lazy" decoding="async" width="717" height="75" src="/wp-content/uploads/2024/07/image-10.png" alt="" class="wp-image-195" style="width:839px;height:auto" srcset="/wp-content/uploads/2024/07/image-10.png 717w, /wp-content/uploads/2024/07/image-10-300x31.png 300w, /wp-content/uploads/2024/07/image-10-600x63.png 600w" sizes="(max-width: 717px) 100vw, 717px" /></figure>
+
+
+
+<p>On the right side, the individual segments can be easily discerned, but this is not true on the left, where several segments are effectively the same shade of black. I believe the issue is related to how most monitors cannot truly represent black in its purest form, and this is difficult to account for in the transformation form a perceptually linear colorspace to sRGB. </p>
+
+
+
+<p>We can slighly shift the colors in the colormap in order to improve the perceptual fidelity in the darkest parts of the colormap. </p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img loading="lazy" decoding="async" width="717" height="125" src="/wp-content/uploads/2024/07/image-12.png" alt="" class="wp-image-197" style="width:839px;height:auto" srcset="/wp-content/uploads/2024/07/image-12.png 717w, /wp-content/uploads/2024/07/image-12-300x52.png 300w, /wp-content/uploads/2024/07/image-12-600x105.png 600w" sizes="(max-width: 717px) 100vw, 717px" /></figure>
+
+
+
+<p>The approach used here is similar to a gamma correction, but acts independently on the lightness and the saturation. There is also a non-linearity applied when the origin is fixed to (0,0,0) in sRGB. The changes are best visualized by plotting the lightness, saturation and hue of each component:</p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img loading="lazy" decoding="async" width="889" height="299" src="/wp-content/uploads/2024/07/image-15.png" alt="" class="wp-image-200" style="width:840px;height:auto" srcset="/wp-content/uploads/2024/07/image-15.png 889w, /wp-content/uploads/2024/07/image-15-300x101.png 300w, /wp-content/uploads/2024/07/image-15-768x258.png 768w, /wp-content/uploads/2024/07/image-15-600x202.png 600w" sizes="(max-width: 889px) 100vw, 889px" /></figure>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img loading="lazy" decoding="async" width="889" height="299" src="/wp-content/uploads/2024/07/image-16.png" alt="" class="wp-image-201" style="width:840px;height:auto" srcset="/wp-content/uploads/2024/07/image-16.png 889w, /wp-content/uploads/2024/07/image-16-300x101.png 300w, /wp-content/uploads/2024/07/image-16-768x258.png 768w, /wp-content/uploads/2024/07/image-16-600x202.png 600w" sizes="(max-width: 889px) 100vw, 889px" /></figure>
+
+
+
+<p>It is worth noting that this is not an issue in the bright part of colorspace, and colormaps with white at the origin perform better with regard to perceptual uniformity:<br>(I refer to these as subtractive colormaps, in contrast to the additive colormaps discussed so far.)</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="554" height="273" src="/wp-content/uploads/2024/07/image-23.png" alt="" class="wp-image-209" srcset="/wp-content/uploads/2024/07/image-23.png 554w, /wp-content/uploads/2024/07/image-23-300x148.png 300w" sizes="(max-width: 554px) 100vw, 554px" /></figure></div>
+
+
+<figure class="wp-block-image size-full is-resized"><img loading="lazy" decoding="async" width="717" height="57" src="/wp-content/uploads/2024/07/image-17.png" alt="" class="wp-image-202" style="width:838px;height:auto" srcset="/wp-content/uploads/2024/07/image-17.png 717w, /wp-content/uploads/2024/07/image-17-300x24.png 300w, /wp-content/uploads/2024/07/image-17-600x48.png 600w" sizes="(max-width: 717px) 100vw, 717px" /></figure>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="888" height="274" src="/wp-content/uploads/2024/07/image-20.png" alt="" class="wp-image-206" srcset="/wp-content/uploads/2024/07/image-20.png 888w, /wp-content/uploads/2024/07/image-20-300x93.png 300w, /wp-content/uploads/2024/07/image-20-768x237.png 768w, /wp-content/uploads/2024/07/image-20-600x185.png 600w" sizes="(max-width: 888px) 100vw, 888px" /></figure>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="571" height="273" src="/wp-content/uploads/2024/07/image-21.png" alt="" class="wp-image-207" srcset="/wp-content/uploads/2024/07/image-21.png 571w, /wp-content/uploads/2024/07/image-21-300x143.png 300w" sizes="(max-width: 571px) 100vw, 571px" /></figure></div>
+
+
+<h2 class="wp-block-heading"> Colormaps with n ≥  4 channels</h2>
+
+
+
+<p>For n ≥ 4, different each color in colorspace is no longer unique (there may be different ways to produce some of the same color in the image) and are therefore best applied only to sparse data (most pixels are only non-zero in one channel so that each pixel in the resulting image has a color close to one of the colorbars). This means that less attention should be paid to how the colormaps combine, as the combined colors are expected to rarely appear in the intended use case. We therefore use only the three first figures of merit:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Each channel should be perceptually uniform.</li>
+
+
+
+<li>All channels should have similar lightness and saturation.</li>
+
+
+
+<li>The perceptual distance between the channels should be maximized.</li>
+
+
+
+<li><s>Equal mixing of the components provides a grayscale</s></li>
+
+
+
+<li><s>No combination leaves sRGB space</s></li>
+</ol>
+
+
+
+<p>Keeping all the other points discussed above in mind (adjusting dark colors, rotating the hues to maximize difference in color for those that are colorblind) we can produce colormaps with 4-8 colors:</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="717" height="58" src="/wp-content/uploads/2024/07/image-29.png" alt="" class="wp-image-216" srcset="/wp-content/uploads/2024/07/image-29.png 717w, /wp-content/uploads/2024/07/image-29-300x24.png 300w, /wp-content/uploads/2024/07/image-29-600x49.png 600w" sizes="(max-width: 717px) 100vw, 717px" /></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="717" height="58" src="/wp-content/uploads/2024/07/image-33.png" alt="" class="wp-image-220" srcset="/wp-content/uploads/2024/07/image-33.png 717w, /wp-content/uploads/2024/07/image-33-300x24.png 300w, /wp-content/uploads/2024/07/image-33-600x49.png 600w" sizes="(max-width: 717px) 100vw, 717px" /></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="717" height="58" src="/wp-content/uploads/2024/07/image-30.png" alt="" class="wp-image-217" srcset="/wp-content/uploads/2024/07/image-30.png 717w, /wp-content/uploads/2024/07/image-30-300x24.png 300w, /wp-content/uploads/2024/07/image-30-600x49.png 600w" sizes="(max-width: 717px) 100vw, 717px" /></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="717" height="58" src="/wp-content/uploads/2024/07/image-31.png" alt="" class="wp-image-218" srcset="/wp-content/uploads/2024/07/image-31.png 717w, /wp-content/uploads/2024/07/image-31-300x24.png 300w, /wp-content/uploads/2024/07/image-31-600x49.png 600w" sizes="(max-width: 717px) 100vw, 717px" /></figure></div>
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="717" height="58" src="/wp-content/uploads/2024/07/image-32.png" alt="" class="wp-image-219" srcset="/wp-content/uploads/2024/07/image-32.png 717w, /wp-content/uploads/2024/07/image-32-300x24.png 300w, /wp-content/uploads/2024/07/image-32-600x49.png 600w" sizes="(max-width: 717px) 100vw, 717px" /></figure></div>
+
+
+<p>We can evaluate these as we did with the n=3 colormaps, here for 4 and 8 colors.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="889" height="290" src="/wp-content/uploads/2024/07/image-35.png" alt="" class="wp-image-222" srcset="/wp-content/uploads/2024/07/image-35.png 889w, /wp-content/uploads/2024/07/image-35-300x98.png 300w, /wp-content/uploads/2024/07/image-35-768x251.png 768w, /wp-content/uploads/2024/07/image-35-600x196.png 600w" sizes="(max-width: 889px) 100vw, 889px" /></figure>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="889" height="290" src="/wp-content/uploads/2024/07/image-34.png" alt="" class="wp-image-221" srcset="/wp-content/uploads/2024/07/image-34.png 889w, /wp-content/uploads/2024/07/image-34-300x98.png 300w, /wp-content/uploads/2024/07/image-34-768x251.png 768w, /wp-content/uploads/2024/07/image-34-600x196.png 600w" sizes="(max-width: 889px) 100vw, 889px" /></figure>
+
+
+
+<p>We see that in both lightness and saturation there are some inconsistencies between different colors. This is because the colormaps approach the limits of sRGB space. The inconsistencies could have been avoided by reducing the maximum lightness and saturation, which would in turn results in more dull colormaps. These colormaps are the result of attempting to strike a balance between vibrant colormaps and perceptual uniformity.</p>
+
+
+
+<p>(For data that is <em>not</em> sparse a different combination mode may be used, but that topic goes beyond the scope of this post.)</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<h2 class="wp-block-heading">A set of colormaps with no bad choices</h2>
+
+
+
+<p>Combining all these together produces the following colormaps:</p>
+</blockquote>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="549" src="/wp-content/uploads/2024/07/image-36-1024x549.png" alt="" class="wp-image-223" srcset="/wp-content/uploads/2024/07/image-36-1024x549.png 1024w, /wp-content/uploads/2024/07/image-36-300x161.png 300w, /wp-content/uploads/2024/07/image-36-768x412.png 768w, /wp-content/uploads/2024/07/image-36-1536x824.png 1536w, /wp-content/uploads/2024/07/image-36-2048x1098.png 2048w, /wp-content/uploads/2024/07/image-36-1400x751.png 1400w, /wp-content/uploads/2024/07/image-36-600x322.png 600w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<ul class="wp-block-list">
+<li>Two (A, B) variants for n = 2 with different hues
+<ul class="wp-block-list">
+<li>Both variants <strong>stay within sRGB</strong> and end at white when combined at the maximum</li>
+</ul>
+</li>
+
+
+
+<li>Four colormaps for n = 3
+<ul class="wp-block-list">
+<li>A and B are designed so that all combinations <strong>stay within sRGB</strong> space
+<ul class="wp-block-list">
+<li>A and B have different hues</li>
+</ul>
+</li>
+
+
+
+<li>C and D are designed to <strong>exceed sRGB space</strong>
+<ul class="wp-block-list">
+<li>C has the same hue as A and D has the same hue as B</li>
+</ul>
+</li>
+</ul>
+</li>
+
+
+
+<li>Two colormaps for n = 4 with different hues
+<ul class="wp-block-list">
+<li>Both  alternatives <strong>exceed sRGB space</strong></li>
+</ul>
+</li>
+
+
+
+<li>One alternative for each of n = 5, 6, 7 and 8
+<ul class="wp-block-list">
+<li>At n=8 is the result of combining the two sets at n = 4</li>
+</ul>
+</li>
+</ul>
+
+
+
+<p>As noted previously, the <em>subtractive</em> colormaps are more perceptually uniform:</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="549" src="/wp-content/uploads/2024/07/image-37-1024x549.png" alt="" class="wp-image-224" srcset="/wp-content/uploads/2024/07/image-37-1024x549.png 1024w, /wp-content/uploads/2024/07/image-37-300x161.png 300w, /wp-content/uploads/2024/07/image-37-768x412.png 768w, /wp-content/uploads/2024/07/image-37-1536x824.png 1536w, /wp-content/uploads/2024/07/image-37-2048x1098.png 2048w, /wp-content/uploads/2024/07/image-37-1400x751.png 1400w, /wp-content/uploads/2024/07/image-37-600x322.png 600w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>By conforming to the figures of merit, we ensure that the most common pitfalls when choosing a colormap can be avoided. <strong>I.e. these colormaps will never be a bad choice</strong>. As such, they form a suitable basis set for general-purpose plotting software, such as matplotlib, pyplot, pyqtgraph, and others.</p>
+
+
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
 		<title>Google SoC &#8211; Bivariate colormaps</title>
 		<link>/google-soc-bivariate-colormaps/</link>
 		
@@ -38,7 +472,7 @@
 
 
 
-<figure class="wp-block-image size-full is-resized"><img fetchpriority="high" decoding="async" width="879" height="578" src="/wp-content/uploads/2024/05/image-4.png" alt="" class="wp-image-167" style="width:588px;height:auto" srcset="/wp-content/uploads/2024/05/image-4.png 879w, /wp-content/uploads/2024/05/image-4-300x197.png 300w, /wp-content/uploads/2024/05/image-4-768x505.png 768w, /wp-content/uploads/2024/05/image-4-600x395.png 600w" sizes="(max-width: 879px) 100vw, 879px" /></figure>
+<figure class="wp-block-image size-full is-resized"><img loading="lazy" decoding="async" width="879" height="578" src="/wp-content/uploads/2024/05/image-4.png" alt="" class="wp-image-167" style="width:588px;height:auto" srcset="/wp-content/uploads/2024/05/image-4.png 879w, /wp-content/uploads/2024/05/image-4-300x197.png 300w, /wp-content/uploads/2024/05/image-4-768x505.png 768w, /wp-content/uploads/2024/05/image-4-600x395.png 600w" sizes="(max-width: 879px) 100vw, 879px" /></figure>
 
 
 
@@ -50,7 +484,7 @@
 
 
 
-<figure class="wp-block-image size-full"><img decoding="async" width="640" height="350" src="/wp-content/uploads/2024/05/image-1.png" alt="" class="wp-image-164" srcset="/wp-content/uploads/2024/05/image-1.png 640w, /wp-content/uploads/2024/05/image-1-300x164.png 300w, /wp-content/uploads/2024/05/image-1-600x328.png 600w" sizes="(max-width: 640px) 100vw, 640px" /></figure>
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="640" height="350" src="/wp-content/uploads/2024/05/image-1.png" alt="" class="wp-image-164" srcset="/wp-content/uploads/2024/05/image-1.png 640w, /wp-content/uploads/2024/05/image-1-300x164.png 300w, /wp-content/uploads/2024/05/image-1-600x328.png 600w" sizes="(max-width: 640px) 100vw, 640px" /></figure>
 
 
 
@@ -58,7 +492,7 @@
 
 
 
-<figure class="wp-block-image size-full"><img decoding="async" width="491" height="342" src="/wp-content/uploads/2024/05/image.png" alt="" class="wp-image-163" srcset="/wp-content/uploads/2024/05/image.png 491w, /wp-content/uploads/2024/05/image-300x209.png 300w" sizes="(max-width: 491px) 100vw, 491px" /></figure>
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="491" height="342" src="/wp-content/uploads/2024/05/image.png" alt="" class="wp-image-163" srcset="/wp-content/uploads/2024/05/image.png 491w, /wp-content/uploads/2024/05/image-300x209.png 300w" sizes="(max-width: 491px) 100vw, 491px" /></figure>
 
 
 
@@ -73,18 +507,18 @@
 		
 			</item>
 		<item>
-		<title>Designing multivariate colormaps</title>
-		<link>/designing-multivariate-colormaps/</link>
-					<comments>/designing-multivariate-colormaps/#respond</comments>
+		<title>Designing 2D colormaps</title>
+		<link>/designing-2d-colormaps/</link>
+					<comments>/designing-2d-colormaps/#respond</comments>
 		
 		<dc:creator><![CDATA[trygvrad]]></dc:creator>
 		<pubDate>Mon, 12 Feb 2024 12:28:19 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
 		<guid isPermaLink="false">/?p=107</guid>
 
-					<description><![CDATA[Multivariate colormaps are seeing use in a number of domains that rely upon python ecosystem. I work with dark-field X-ray microscopy, which is one such domain, but there are numerous others, such as astronomy, polarization microscopy etc. While each domain may have dedicated tooling, darfix, astropy, xrayutilities etc, this tooling is built upon the scientific... <a class="more-link" href="/designing-multivariate-colormaps/#more-107">Continue Reading &#8594;</a>]]></description>
+					<description><![CDATA[Two dimensional colormaps are seeing use in a number of domains that rely upon python ecosystem. I work with dark-field X-ray microscopy, which is one such domain, but there are numerous others, such as astronomy, polarization microscopy etc. While each domain may have dedicated tooling, darfix, astropy, xrayutilities etc, this tooling is built upon the... <a class="more-link" href="/designing-2d-colormaps/#more-107">Continue Reading &#8594;</a>]]></description>
 										<content:encoded><![CDATA[
-<p>Multivariate colormaps are seeing use in a number of domains that rely upon python ecosystem. I work with dark-field X-ray microscopy, which is one such domain, but there are numerous others, such as astronomy, polarization microscopy etc. While each domain may have dedicated tooling, <a href="https://gitlab.esrf.fr/XRD/darfix">darfix</a>, <a href="https://www.astropy.org/">astropy</a>, <a href="https://xrayutilities.sourceforge.io/">xrayutilities</a> etc, this tooling is built upon the scientific python stack, including <a href="https://numpy.org/">numpy</a>, <a href="https://scipy.org/">scipy</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://matplotlib.org/">matplotlib</a>, <a href="https://plotly.com/">plotly</a>, etc. Since these domains share common challenges regarding multivariate colormaps, it would be ideal to handle these challenges upstream (i.e. in matplotlib, plotly, etc.) rather than in the domain-specific packages. In addition to the technical implementation, the design criteria for multivariate colormaps must be explored. </p>
+<p>Two dimensional colormaps are seeing use in a number of domains that rely upon python ecosystem. I work with dark-field X-ray microscopy, which is one such domain, but there are numerous others, such as astronomy, polarization microscopy etc. While each domain may have dedicated tooling, <a href="https://gitlab.esrf.fr/XRD/darfix">darfix</a>, <a href="https://www.astropy.org/">astropy</a>, <a href="https://xrayutilities.sourceforge.io/">xrayutilities</a> etc, this tooling is built upon the scientific python stack, including <a href="https://numpy.org/">numpy</a>, <a href="https://scipy.org/">scipy</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://matplotlib.org/">matplotlib</a>, <a href="https://plotly.com/">plotly</a>, etc. Since these domains share common challenges regarding multivariate colormaps, it would be ideal to handle these challenges upstream (i.e. in matplotlib, plotly, etc.) rather than in the domain-specific packages. In addition to the technical implementation, the design criteria for multivariate colormaps must be explored.</p>
 
 
 
@@ -217,7 +651,7 @@
 <p class="has-small-font-size">Kruse, Andrew W., et al. &#8220;User study comparing linearity and orthogonalization for polarimetric visualizations.&#8221; <em>IEEE Access</em> 10 (2022): 28308-28321.<br></p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/designing-multivariate-colormaps/feed/</wfw:commentRss>
+					<wfw:commentRss>/designing-2d-colormaps/feed/</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
@@ -462,67 +896,6 @@
 
 
 <p>Built using pyFAI, PySide2 and pyqtgraph, the program allows the user to have a quick look at data and check metadata, i.e. timestamp and motor positions.</p>
-]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>Colorshifter</title>
-		<link>/colorshifter/</link>
-		
-		<dc:creator><![CDATA[trygvrad]]></dc:creator>
-		<pubDate>Wed, 14 Sep 2022 21:24:34 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">http://localhost/?p=41</guid>
-
-					<description><![CDATA[Colorshifter is an image manipulation app that for transforming the colorspace of an image in L*a*b* color coordinates. github The left/right image is the original/transformed image The histogram allows the user to edit the lightness (L*) The colormap on the right shows the a*b* plane, with a 2d histogram of the original image as white... <a class="more-link" href="/colorshifter/#more-41">Continue Reading &#8594;</a>]]></description>
-										<content:encoded><![CDATA[
-<p>Colorshifter is an image manipulation app that for transforming the colorspace of an image in L*a*b* color coordinates. <a href="https://github.com/trygvrad/colorshifter">github</a></p>
-
-
-
-<span id="more-41"></span>
-
-
-
-<p>The left/right image is the original/transformed image</p>
-
-
-
-<p>The histogram allows the user to edit the lightness (L*)</p>
-
-
-
-<p>The colormap on the right shows the a*b* plane, with a 2d histogram of the original image as white contour lines, and ditto for the transformed image as black. The shape/position/rotation of the rectangle defines how the original colorspace transforms onto the new colorspace.</p>
-
-
-
-<p>Because not all colors in the transformed colorspace produce valid colors in RGB space, one may choose to limit the lighness or saturation for colors outside the RGB space.<br>To achieve specific transformations the a*b* plane may be rotated before the transformation occurs (rotating the primary axis of the rectangle)</p>
-
-
-
-<p>The program used to edit a real image:</p>
-
-
-
-<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="551" src="http://localhost/wp-content/uploads/2023/06/Example-0-1024x551-1.png" alt="" class="wp-image-42" srcset="/wp-content/uploads/2023/06/Example-0-1024x551-1.png 1024w, /wp-content/uploads/2023/06/Example-0-1024x551-1-300x161.png 300w, /wp-content/uploads/2023/06/Example-0-1024x551-1-768x413.png 768w, /wp-content/uploads/2023/06/Example-0-1024x551-1-600x323.png 600w, /wp-content/uploads/2023/06/Example-0-1024x551-1-945x508.png 945w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
-
-
-
-<p>Used to recolor for prototyping:</p>
-
-
-
-<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="593" src="http://localhost/wp-content/uploads/2023/06/example-2-1024x593-1.png" alt="" class="wp-image-43" srcset="/wp-content/uploads/2023/06/example-2-1024x593-1.png 1024w, /wp-content/uploads/2023/06/example-2-1024x593-1-300x174.png 300w, /wp-content/uploads/2023/06/example-2-1024x593-1-768x445.png 768w, /wp-content/uploads/2023/06/example-2-1024x593-1-600x347.png 600w, /wp-content/uploads/2023/06/example-2-1024x593-1-945x547.png 945w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
-
-
-
-<p>Or used to recolor a texture (here also removing blue hues):</p>
-
-
-
-<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="595" src="http://localhost/wp-content/uploads/2023/06/example-1-1-1024x595-1.png" alt="" class="wp-image-44" srcset="/wp-content/uploads/2023/06/example-1-1-1024x595-1.png 1024w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-300x174.png 300w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-768x446.png 768w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-600x349.png 600w, /wp-content/uploads/2023/06/example-1-1-1024x595-1-945x549.png 945w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
 ]]></content:encoded>
 					
 		

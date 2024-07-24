@@ -7,15 +7,15 @@
 	>
 <channel>
 	<title>
-	Comments on: Designing multivariate colormaps	</title>
-	<atom:link href="/designing-multivariate-colormaps/feed/" rel="self" type="application/rss+xml" />
-	<link>/designing-multivariate-colormaps/</link>
+	Comments on: Multivariate colormaps for n dimensions	</title>
+	<atom:link href="/multivariate-colormaps-for-n-dimensions/feed/" rel="self" type="application/rss+xml" />
+	<link>/multivariate-colormaps-for-n-dimensions/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Tue, 13 Feb 2024 09:07:09 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 24 Jul 2024 11:17:29 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=6.5.3</generator>
+	<generator>https://wordpress.org/?v=6.6.1</generator>
 </channel>
 </rss>
