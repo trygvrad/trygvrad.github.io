@@ -12,7 +12,7 @@
 	<atom:link href="/author/trygvrad/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Wed, 24 Jul 2024 11:17:29 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 20 Aug 2024 15:40:08 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -20,6 +20,231 @@
 	1	</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=6.6.1</generator>
 	<item>
+		<title>GSOC 2024  &#8211; Bivariate Colormaps &#8211; Summary</title>
+		<link>/gsoc-2024-bivariate-colormaps-summary/</link>
+					<comments>/gsoc-2024-bivariate-colormaps-summary/#respond</comments>
+		
+		<dc:creator><![CDATA[trygvrad]]></dc:creator>
+		<pubDate>Tue, 20 Aug 2024 15:40:08 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">/?p=246</guid>
+
+					<description><![CDATA[Color mapping with multiple channels has long been a requested feature in Matplotlib, one this Google Summer of Code project (GSOC) has attempted to address, the figure below shows the desired functionality: While a complete solution for bivariate color mapping has not been merged to main at the time of writing, the intention is to... <a class="more-link" href="/gsoc-2024-bivariate-colormaps-summary/#more-246">Continue Reading &#8594;</a>]]></description>
+										<content:encoded><![CDATA[
+<p>Color mapping with multiple channels has long been a <a href="https://github.com/matplotlib/matplotlib/issues/14168">requested feature</a> in Matplotlib, one this Google Summer of Code project (GSOC) has attempted to address, the figure below shows the desired functionality: </p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img fetchpriority="high" decoding="async" width="879" height="578" src="/wp-content/uploads/2024/05/image-4.png" alt="" class="wp-image-167" style="width:588px;height:auto" srcset="/wp-content/uploads/2024/05/image-4.png 879w, /wp-content/uploads/2024/05/image-4-300x197.png 300w, /wp-content/uploads/2024/05/image-4-768x505.png 768w, /wp-content/uploads/2024/05/image-4-600x395.png 600w" sizes="(max-width: 879px) 100vw, 879px" /></figure>
+
+
+
+<span id="more-246"></span>
+
+
+
+<p>While a complete solution for bivariate color mapping has not been merged to main at the time of writing, the intention is to have it in place for the 3.10 release of Matplotlib (~October 2024). This represents a delay of the project as compared to the original timeline, caused by a change in the scope of the project. </p>
+
+
+
+<p>Originally, this GSOC project was based on replacing <code>cm.ScalarMappable</code> with a vector version<code>,cm.VectorMappable</code>, (<a href="https://github.com/matplotlib/matplotlib/pull/28428">relevant PR</a>). However, with the involvement of the API lead <a href="https://github.com/timhoffm">@timhoffm</a> it was decided to rework the <code>data→color</code> pipeline before implementing bivariate color mapping. </p>
+
+
+
+<h2 class="wp-block-heading">Color by numbers (advanced version)</h2>
+
+
+
+<p>Representing data with color lies at the root of many of the plotting methods in Matplotlib. In practice, this is handled by the class <code>cm.ScalarMappable</code> which handles normalization (through <code>colors.Normalize</code>) and color mapping (through <code>colors.Colormap</code>). <code>cm.ScalarMappable</code> is therefore at the root of the inheritance tree, together with `artist.Artist`. The figure below shows all the top-level plotting methods that use the data→color transformation.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="604" src="/wp-content/uploads/2024/08/rect400-1024x604.png" alt="" class="wp-image-248" srcset="/wp-content/uploads/2024/08/rect400-1024x604.png 1024w, /wp-content/uploads/2024/08/rect400-300x177.png 300w, /wp-content/uploads/2024/08/rect400-768x453.png 768w, /wp-content/uploads/2024/08/rect400-1536x905.png 1536w, /wp-content/uploads/2024/08/rect400-2048x1207.png 2048w, /wp-content/uploads/2024/08/rect400-1400x825.png 1400w, /wp-content/uploads/2024/08/rect400-600x354.png 600w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>What <a href="https://github.com/timhoffm">@timhoffm</a> <a href="https://github.com/matplotlib/matplotlib/pull/28428">argued</a> was that the <code>data→color</code> pipeline may be shared by multiple elements in the same figure, but the current class hierarchy (subclassing <code>cm.ScallarMappable</code>) is not conducive to this use case, i.e. the user must <a href="https://matplotlib.org/stable/gallery/images_contours_and_fields/multi_image.html#advanced-additionally-sync-the-colormap">manually add callbacks</a> between different graphical objects to obtain this functionality.</p>
+
+
+
+<p>Changing the class hierarchy would have major positive implications:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Increased functionality when working with multiple graphical elements that share a <code>data→color</code> pipeline</li>
+
+
+
+<li>Simplify code maintenance by separation of concerns</li>
+
+
+
+<li>Simplify the introduction of bivariate color mapping</li>
+</ol>
+
+
+
+<p>The proposed architecture change is as follows:</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><img decoding="async" width="982" height="1024" src="/wp-content/uploads/2024/08/rect1242-1-982x1024.png" alt="" class="wp-image-252" style="width:585px;height:auto" srcset="/wp-content/uploads/2024/08/rect1242-1-982x1024.png 982w, /wp-content/uploads/2024/08/rect1242-1-288x300.png 288w, /wp-content/uploads/2024/08/rect1242-1-768x801.png 768w, /wp-content/uploads/2024/08/rect1242-1-600x626.png 600w, /wp-content/uploads/2024/08/rect1242-1.png 995w" sizes="(max-width: 982px) 100vw, 982px" /></figure></div>
+
+
+<p>Where the <code>data→color</code> transformation is contained in the new <code>colorizer.Colorizer</code> module, and one colorizer can control the <code>data→color</code> pipeline for multiple plots:<br></p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="478" src="/wp-content/uploads/2024/08/rect1246-1024x478.png" alt="" class="wp-image-255" srcset="/wp-content/uploads/2024/08/rect1246-1024x478.png 1024w, /wp-content/uploads/2024/08/rect1246-300x140.png 300w, /wp-content/uploads/2024/08/rect1246-768x359.png 768w, /wp-content/uploads/2024/08/rect1246-600x280.png 600w, /wp-content/uploads/2024/08/rect1246.png 1154w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>These changes are implemented in the <a href="https://github.com/matplotlib/matplotlib/pull/28658#top">New data → color pipeline</a> PR, and the (slightly outdated) video shows how multiple images that share a colorizer behave.</p>
+
+
+
+<figure class="wp-block-video"><video controls src="/wp-content/uploads/2024/08/1.mp4"></video></figure>
+
+
+
+<h2 class="wp-block-heading">Colormap classes for bivariate (and multivariate) colormaps</h2>
+
+
+
+<p>A separate PR, <a href="https://github.com/matplotlib/matplotlib/pull/28454#top">MultivarColormap and BivarColormap</a>, introduces classes that hold bivariate colormaps.<br>The bivariate colormaps come in different shapes:<br></p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="990" height="374" src="/wp-content/uploads/2024/08/image.png" alt="" class="wp-image-253" srcset="/wp-content/uploads/2024/08/image.png 990w, /wp-content/uploads/2024/08/image-300x113.png 300w, /wp-content/uploads/2024/08/image-768x290.png 768w, /wp-content/uploads/2024/08/image-600x227.png 600w" sizes="(max-width: 990px) 100vw, 990px" /></figure>
+
+
+
+<p>while the multivariate colormaps come with different combination modes:</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="995" height="374" src="/wp-content/uploads/2024/08/image-1.png" alt="" class="wp-image-254" srcset="/wp-content/uploads/2024/08/image-1.png 995w, /wp-content/uploads/2024/08/image-1-300x113.png 300w, /wp-content/uploads/2024/08/image-1-768x289.png 768w, /wp-content/uploads/2024/08/image-1-600x226.png 600w" sizes="(max-width: 995px) 100vw, 995px" /></figure>
+
+
+
+<h2 class="wp-block-heading">Exposing bivariate (and multivariate) colormaps to plotting methods</h2>
+
+
+
+<p>Using bivariate or multivariate colormaps requires a multivariate normalization, so before the new colormaps can be exposed to users, <a href="https://github.com/matplotlib/matplotlib/commit/1fb5dd808b1367aaad66da29ebeab3b722f6aa5e">a <code>colors.MultiNorm</code> class</a> must be implemented. By using a <code>colors.MultiNorm</code> and a <code>colors.BivarColormap</code> with a  <code>colorizer.Colorizer</code> object, the new functionality can <a href="https://github.com/matplotlib/matplotlib/commit/6018bd7a79518e5058f59431fd036979c16ecfd6">be exposed to the top level plotting functions</a> (i.e. <code>ax.imshow()</code>). </p>
+
+
+
+<p>Both of these features exist as commits (links above), and will be part of a PR after the <a href="https://github.com/matplotlib/matplotlib/pull/28658" data-type="link" data-id="https://github.com/matplotlib/matplotlib/pull/28658">two</a> <a href="https://github.com/matplotlib/matplotlib/pull/28454">other</a> PRs are merged. </p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="574" src="/wp-content/uploads/2024/08/g1370-1024x574.png" alt="" class="wp-image-257" srcset="/wp-content/uploads/2024/08/g1370-1024x574.png 1024w, /wp-content/uploads/2024/08/g1370-300x168.png 300w, /wp-content/uploads/2024/08/g1370-768x430.png 768w, /wp-content/uploads/2024/08/g1370-600x336.png 600w, /wp-content/uploads/2024/08/g1370.png 1376w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Combined with the functionality of the <code>colorizer.Colorizer</code>, this solution allows for coupled plots where a single axes from a bivariate or multivariate colormap can be used together with the full colormap:</p>
+
+
+
+<figure class="wp-block-video"><video controls src="/wp-content/uploads/2024/08/2.mp4"></video></figure>
+
+
+
+<h2 class="wp-block-heading">Choosing bivariate and multivariate colormaps</h2>
+
+
+
+<p>Once the functionality is implemented, there needs to be colormaps for the user to choose from. I have written two blogposts describing the design considerations relevant for their design:</p>
+
+
+
+<p><a href="/designing-2d-colormaps/" data-type="post" data-id="107">Designing 2D colormaps</a></p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="750" src="/wp-content/uploads/2024/08/image-2.png" alt="" class="wp-image-260" srcset="/wp-content/uploads/2024/08/image-2.png 1024w, /wp-content/uploads/2024/08/image-2-300x220.png 300w, /wp-content/uploads/2024/08/image-2-768x563.png 768w, /wp-content/uploads/2024/08/image-2-600x439.png 600w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p><a href="/multivariate-colormaps-for-n-dimensions/" data-type="post" data-id="159">Multivariate colormaps for n dimensions</a></p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="549" src="/wp-content/uploads/2024/08/image-3.png" alt="" class="wp-image-261" srcset="/wp-content/uploads/2024/08/image-3.png 1024w, /wp-content/uploads/2024/08/image-3-300x161.png 300w, /wp-content/uploads/2024/08/image-3-768x412.png 768w, /wp-content/uploads/2024/08/image-3-600x322.png 600w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="549" src="/wp-content/uploads/2024/08/image-4.png" alt="" class="wp-image-262" srcset="/wp-content/uploads/2024/08/image-4.png 1024w, /wp-content/uploads/2024/08/image-4-300x161.png 300w, /wp-content/uploads/2024/08/image-4-768x412.png 768w, /wp-content/uploads/2024/08/image-4-600x322.png 600w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>In an effort to separate different concerns, these have not been a part of PR#28454 <a href="https://github.com/matplotlib/matplotlib/pull/28454#top">MultivarColormap and BivarColormap</a>, and will need to be introduced in a separate PR.</p>
+
+
+
+<p>This should also feature a guide to how the <a href="http://trygvrad.com/mpl_docs/Bivariate colormaps.html">new functionality</a> <a href="http://trygvrad.com/mpl_docs/Multivariate colormaps.html">can be used</a>, and <a href="http://trygvrad.com/mpl_docs/Bivariate colormap reference.html">how to choose</a> <a href="http://trygvrad.com/mpl_docs/Multivariate colormap reference.html">a colormap</a>.</p>
+
+
+
+<h2 class="wp-block-heading">Colorbars</h2>
+
+
+
+<p>To complete the figure, a multidimensional colorbar must be added. There is a draft for this <a href="https://github.com/matplotlib/matplotlib/commit/a64bb195e37d0a4a2169b7d24beeec3bd59aa3ad">here</a>, but some work still remains. Firstly, a <code>BivarColorbar</code> class must be created (in the multivariate case &#8211; a list of <code>Colorbar</code> objects will work). Secondly, the automatic positioning of the colorbars in the figure needs some improvement. </p>
+
+
+
+<h2 class="wp-block-heading">Summary</h2>
+
+
+
+<p>This project has grown in scope and now includes:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Classes for bivariate and multivariate colormaps <a href="https://github.com/matplotlib/matplotlib/pull/28454">#28454</a></li>
+
+
+
+<li>Reworking the <code>data→color</code> pipeline<a href="https://github.com/matplotlib/matplotlib/pull/28658#top">#28658</a> </li>
+
+
+
+<li>Exposing bivariate and multivariate colormaps to the plotting methods</li>
+
+
+
+<li>A selection of bivariate and multivariate colormaps</li>
+
+
+
+<li>&#8220;Colorbar&#8221; objects for the bivariate and multivariate case</li>
+</ol>
+
+
+
+<p>Of these, step 1 has been approved, and step 2 is (hopefully) near the end of code review. Step 3 waits for step 1 and 2 to be merged, but the PR will be made soon. Step 4 is similarly ready, but the PR should be made after the code review of step 3 has started. The PR for step 5 will similarly follow once step 4 is merged.</p>
+
+
+
+<p>In other words, there is still some work to be done, but as there exists drafts for all the remaining functionality the remaining workloads are less code-intensive, and instead lean towards the collaborative aspects of open source. This project involves re-organizing the <code>data→color</code> pipeline for all relevant plotting methods, and it is therefore important that all the Matplotlib maintainers get to chime in at every step of the way. This process takes time, but ensures a better outcome. </p>
+
+
+
+<p>Thank you to Hannah and Kyle for guiding me through GSOC, and to Elliot, Tom, Tim and Jody for feedback on the PRs.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/gsoc-2024-bivariate-colormaps-summary/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		<enclosure url="/wp-content/uploads/2024/08/1.mp4" length="561098" type="video/mp4" />
+<enclosure url="/wp-content/uploads/2024/08/2.mp4" length="355100" type="video/mp4" />
+
+			</item>
+		<item>
 		<title>Multivariate colormaps for n dimensions</title>
 		<link>/multivariate-colormaps-for-n-dimensions/</link>
 		
@@ -34,7 +259,7 @@
 
 
 
-<p>This post follows my previous post on<a href="../designing-2D-colormaps"> 2D colormaps</a>, and many of the design principles will be the same. However, with n ≥ 3, it quickly becomes unfeasible to create a full lookup table. With n = 3 channels and 256 values in each channel, the lookup table would be a matrix of 256^3 elements, likely much larger than the image the colormap is applied to. Instead, n independent 1D lookup tables are created, and the resulting colors are then combined.</p>
+<p>This post follows my previous post on<a href="../designing-2d-colormaps"> 2D colormaps</a>, and many of the design principles will be the same. However, with n ≥ 3, it quickly becomes unfeasible to create a full lookup table. With n = 3 channels and 256 values in each channel, the lookup table would be a matrix of 256^3 elements, likely much larger than the image the colormap is applied to. Instead, n independent 1D lookup tables are created, and the resulting colors are then combined.</p>
 
 
 
@@ -46,14 +271,14 @@
 
 
 <div class="wp-block-image">
-<figure class="aligncenter size-full"><img fetchpriority="high" decoding="async" width="718" height="303" src="/wp-content/uploads/2024/07/image.png" alt="" class="wp-image-180" srcset="/wp-content/uploads/2024/07/image.png 718w, /wp-content/uploads/2024/07/image-300x127.png 300w, /wp-content/uploads/2024/07/image-600x253.png 600w" sizes="(max-width: 718px) 100vw, 718px" /></figure></div>
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="718" height="303" src="/wp-content/uploads/2024/07/image.png" alt="" class="wp-image-180" srcset="/wp-content/uploads/2024/07/image.png 718w, /wp-content/uploads/2024/07/image-300x127.png 300w, /wp-content/uploads/2024/07/image-600x253.png 600w" sizes="(max-width: 718px) 100vw, 718px" /></figure></div>
 
 
 <p>Both images above display the same data, with the same normalization, but by swapping the color different aspects are highlighted. The green channel has higher perceptual lightness and saturation, and the features of the green channel are therefore highlighted. <br>The lightness and saturation of the R, G and B channels can be visualized by displaying the three channels in a perceptually uniform colorspace. </p>
 
 
 
-<iframe src="https://trygvrad.github.io/plotly_multivar_colormaps/RGB_multivar.html" height="520" width="420" frameborder="0" allow="fullscreen"></iframe>
+<iframe loading="lazy" src="https://trygvrad.github.io/plotly_multivar_colormaps/RGB_multivar.html" height="520" width="420" frameborder="0" allow="fullscreen"></iframe>
 
 
 
@@ -79,7 +304,7 @@
 
 
 
-<iframe src="https://trygvrad.github.io/plotly_multivar_colormaps/new_RGB_multivar.html" height="520" width="420" frameborder="0" allow="fullscreen"></iframe>
+<iframe loading="lazy" src="https://trygvrad.github.io/plotly_multivar_colormaps/new_RGB_multivar.html" height="520" width="420" frameborder="0" allow="fullscreen"></iframe>
 
 
 <div class="wp-block-image">
@@ -871,31 +1096,6 @@
 
 
 <p>There is minimal documentation, but perhaps someone else will find it useful nonetheless.</p>
-]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>.edf viewer</title>
-		<link>/edf-viewer/</link>
-		
-		<dc:creator><![CDATA[trygvrad]]></dc:creator>
-		<pubDate>Thu, 15 Sep 2022 21:55:29 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">http://localhost/?p=50</guid>
-
-					<description><![CDATA[My edf viewer is a simple program to explore .edf files from the European Synchrotron Radiation Facility (ESRF). Built using pyFAI, PySide2 and pyqtgraph, the program allows the user to have a quick look at data and check metadata, i.e. timestamp and motor positions.]]></description>
-										<content:encoded><![CDATA[
-<p>My edf viewer is a simple program to explore .edf files from the European Synchrotron Radiation Facility (ESRF).</p>
-
-
-
-<span id="more-50"></span>
-
-
-
-<p>Built using pyFAI, PySide2 and pyqtgraph, the program allows the user to have a quick look at data and check metadata, i.e. timestamp and motor positions.</p>
 ]]></content:encoded>
 					
 		

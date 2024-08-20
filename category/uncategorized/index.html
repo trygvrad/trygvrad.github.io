@@ -109,11 +109,41 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 				
 	<div class="post-container">
 
+	<article id="post-246" class="post-246 post type-post status-publish format-standard hentry category-uncategorized clear">
+
+		<header class="post-header"><h1 class="post-title entry-title"><a href="/gsoc-2024-bivariate-colormaps-summary/" rel="bookmark">GSOC 2024  &#8211; Bivariate Colormaps &#8211; Summary</a></h1></header>			<div class="post-content clear">
+				
+<p>Color mapping with multiple channels has long been a <a href="https://github.com/matplotlib/matplotlib/issues/14168">requested feature</a> in Matplotlib, one this Google Summer of Code project (GSOC) has attempted to address, the figure below shows the desired functionality: </p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img fetchpriority="high" decoding="async" width="879" height="578" src="/wp-content/uploads/2024/05/image-4.png" alt="" class="wp-image-167" style="width:588px;height:auto" srcset="/wp-content/uploads/2024/05/image-4.png 879w, /wp-content/uploads/2024/05/image-4-300x197.png 300w, /wp-content/uploads/2024/05/image-4-768x505.png 768w, /wp-content/uploads/2024/05/image-4-600x395.png 600w" sizes="(max-width: 879px) 100vw, 879px"></figure>
+
+
+
+ <a href="/gsoc-2024-bivariate-colormaps-summary/#more-246" class="more-link">Continue reading <span class="screen-reader-text">&#8220;GSOC 2024  &#8211; Bivariate Colormaps &#8211; Summary&#8221;</span> <span class="meta-nav">&rarr;</span></a>			</div>
+<!--/.post-content-->
+		
+	
+	<div class="post-meta clear">
+					<time class="updated" datetime="2024-08-20">
+				<a class="post-date" href="/gsoc-2024-bivariate-colormaps-summary/" title="GSOC 2024  &#8211; Bivariate Colormaps &#8211; Summary">
+					<i class="fa fa-clock-o"></i>August 20, 2024				</a>
+			</time>
+				<a href="/gsoc-2024-bivariate-colormaps-summary/#respond" class="post-comments">0</a>	</div>
+
+
+	</article> <!-- /post -->
+
+	</div>
+
+	<div class="post-container">
+
 	<article id="post-159" class="post-159 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized clear">
 
 		<header class="post-header"><h1 class="post-title entry-title"><a href="/multivariate-colormaps-for-n-dimensions/" rel="bookmark">Multivariate colormaps for n dimensions</a></h1></header>			<div class="featured-media">
 									<a href="/multivariate-colormaps-for-n-dimensions/" rel="bookmark" title="Multivariate colormaps for n dimensions">
-						<img width="600" height="322" src="/wp-content/uploads/2024/07/image-36-600x322.png" class="attachment-baskerville-2-post-thumbnail size-baskerville-2-post-thumbnail wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="/wp-content/uploads/2024/07/image-36-600x322.png 600w, /wp-content/uploads/2024/07/image-36-300x161.png 300w, /wp-content/uploads/2024/07/image-36-1024x549.png 1024w, /wp-content/uploads/2024/07/image-36-768x412.png 768w, /wp-content/uploads/2024/07/image-36-1536x824.png 1536w, /wp-content/uploads/2024/07/image-36-2048x1098.png 2048w, /wp-content/uploads/2024/07/image-36-1400x751.png 1400w" sizes="(max-width: 600px) 100vw, 600px">					</a>
+						<img width="600" height="322" src="/wp-content/uploads/2024/07/image-36-600x322.png" class="attachment-baskerville-2-post-thumbnail size-baskerville-2-post-thumbnail wp-post-image" alt="" decoding="async" srcset="/wp-content/uploads/2024/07/image-36-600x322.png 600w, /wp-content/uploads/2024/07/image-36-300x161.png 300w, /wp-content/uploads/2024/07/image-36-1024x549.png 1024w, /wp-content/uploads/2024/07/image-36-768x412.png 768w, /wp-content/uploads/2024/07/image-36-1536x824.png 1536w, /wp-content/uploads/2024/07/image-36-2048x1098.png 2048w, /wp-content/uploads/2024/07/image-36-1400x751.png 1400w" sizes="(max-width: 600px) 100vw, 600px">					</a>
 							</div> <!-- /featured-media -->
 					<div class="post-content clear">
 				
@@ -121,7 +151,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 
 
 
-<p>This post follows my previous post on<a href="/category/designing-2D-colormaps"> 2D colormaps</a>, and many of the design principles will be the same. However, with n ≥ 3, it quickly becomes unfeasible to create a full lookup table. With n = 3 channels and 256 values in each channel, the lookup table would be a matrix of 256^3 elements, likely much larger than the image the colormap is applied to. Instead, n independent 1D lookup tables are created, and the resulting colors are then combined.</p>
+<p>This post follows my previous post on<a href="/category/designing-2d-colormaps"> 2D colormaps</a>, and many of the design principles will be the same. However, with n ≥ 3, it quickly becomes unfeasible to create a full lookup table. With n = 3 channels and 256 values in each channel, the lookup table would be a matrix of 256^3 elements, likely much larger than the image the colormap is applied to. Instead, n independent 1D lookup tables are created, and the resulting colors are then combined.</p>
 
 
 
@@ -181,7 +211,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 
 		<header class="post-header"><h1 class="post-title entry-title"><a href="/designing-2d-colormaps/" rel="bookmark">Designing 2D colormaps</a></h1></header>			<div class="featured-media">
 									<a href="/designing-2d-colormaps/" rel="bookmark" title="Designing 2D colormaps">
-						<img width="600" height="326" src="/wp-content/uploads/2024/02/header_img-600x326.png" class="attachment-baskerville-2-post-thumbnail size-baskerville-2-post-thumbnail wp-post-image" alt="" decoding="async" srcset="/wp-content/uploads/2024/02/header_img-600x326.png 600w, /wp-content/uploads/2024/02/header_img-300x163.png 300w, /wp-content/uploads/2024/02/header_img-768x417.png 768w, /wp-content/uploads/2024/02/header_img.png 923w" sizes="(max-width: 600px) 100vw, 600px">					</a>
+						<img width="600" height="326" src="/wp-content/uploads/2024/02/header_img-600x326.png" class="attachment-baskerville-2-post-thumbnail size-baskerville-2-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="/wp-content/uploads/2024/02/header_img-600x326.png 600w, /wp-content/uploads/2024/02/header_img-300x163.png 300w, /wp-content/uploads/2024/02/header_img-768x417.png 768w, /wp-content/uploads/2024/02/header_img.png 923w" sizes="(max-width: 600px) 100vw, 600px">					</a>
 							</div> <!-- /featured-media -->
 					<div class="post-content clear">
 				
@@ -385,36 +415,6 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 					<time class="updated" datetime="2022-09-19">
 				<a class="post-date" href="/crystal-structures-as-vector-graphics/" title="Crystal structures as vector graphics">
 					<i class="fa fa-clock-o"></i>September 19, 2022				</a>
-			</time>
-					</div>
-
-
-	</article> <!-- /post -->
-
-	</div>
-
-	<div class="post-container">
-
-	<article id="post-50" class="post-50 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized clear">
-
-		<header class="post-header"><h1 class="post-title entry-title"><a href="/edf-viewer/" rel="bookmark">.edf viewer</a></h1></header>			<div class="featured-media">
-									<a href="/edf-viewer/" rel="bookmark" title=".edf viewer">
-						<img width="600" height="358" src="/wp-content/uploads/2023/06/edf_viewer.png" class="attachment-baskerville-2-post-thumbnail size-baskerville-2-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="/wp-content/uploads/2023/06/edf_viewer.png 1085w, /wp-content/uploads/2023/06/edf_viewer-300x179.png 300w, /wp-content/uploads/2023/06/edf_viewer-1024x612.png 1024w, /wp-content/uploads/2023/06/edf_viewer-768x459.png 768w, /wp-content/uploads/2023/06/edf_viewer-600x358.png 600w, /wp-content/uploads/2023/06/edf_viewer-945x564.png 945w" sizes="(max-width: 600px) 100vw, 600px">					</a>
-							</div> <!-- /featured-media -->
-					<div class="post-content clear">
-				
-<p>My edf viewer is a simple program to explore .edf files from the European Synchrotron Radiation Facility (ESRF).</p>
-
-
-
- <a href="/edf-viewer/#more-50" class="more-link">Continue reading <span class="screen-reader-text">&#8220;.edf viewer&#8221;</span> <span class="meta-nav">&rarr;</span></a>			</div>
-<!--/.post-content-->
-		
-	
-	<div class="post-meta clear">
-					<time class="updated" datetime="2022-09-15">
-				<a class="post-date" href="/edf-viewer/" title=".edf viewer">
-					<i class="fa fa-clock-o"></i>September 15, 2022				</a>
 			</time>
 					</div>
 

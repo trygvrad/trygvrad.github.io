@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<title>GSOC 2024  &#8211; Bivariate Colormaps &#8211; Summary &#8211; Projects of TMR</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Projects of TMR &raquo; Feed" href="/feed/">
+<link rel="alternate" type="application/rss+xml" title="Projects of TMR &raquo; Comments Feed" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Projects of TMR &raquo; GSOC 2024  &#8211; Bivariate Colormaps &#8211; Summary Comments Feed" href="/gsoc-2024-bivariate-colormaps-summary/feed/">
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.6.1"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=6.6.1" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="baskerville-2-style-css" href="/wp-content/themes/baskerville-2-wpcom/style.css?ver=6.6.1" type="text/css" media="all">
+<link rel="stylesheet" id="baskerville-2-fonts-css" href="https://fonts.googleapis.com/css?family=Roboto+Slab%3A400%2C700%7CRoboto%3A400%2C400italic%2C700%2C700italic%2C300%7CPacifico%3A400&#038;subset=latin%2Clatin-ext" type="text/css" media="all">
+<link rel="stylesheet" id="fontawesome-css" href="/wp-content/themes/baskerville-2-wpcom/fontawesome/font-awesome.css?ver=4.3.0" type="text/css" media="all">
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<link rel="https://api.w.org/" href="/wp-json/">
+<link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/246">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 6.6.1">
+<link rel="canonical" href="/gsoc-2024-bivariate-colormaps-summary/">
+<link rel="shortlink" href="/?p=246">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fgsoc-2024-bivariate-colormaps-summary%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fgsoc-2024-bivariate-colormaps-summary%2F#038;format=xml">
+<link rel="pingback" href="/xmlrpc.php">
+</head>
+
+<body class="post-template-default single single-post postid-246 single-format-standard no-featured-image">
+
+	<a class="screen-reader-text skip-link" href="#content">Skip to content</a>
+
+	<header class="header section small-padding bg-dark bg-image" style="background-image: url();" role="banner">
+
+		<a href="/" rel="home">
+			<div class="cover"></div>
+		</a>
+
+		<a href="#search-container" class="screen-reader-text search-toggle">Search</a>
+		<div class="header-search-block bg-graphite hidden" id="search-container">
+			<form role="search" method="get" class="search-form" action="http://bentus/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Search">
+			</form>		</div> <!-- /header-search-block -->
+
+		<div class="header-inner section-inner">
+
+			
+							<p class="site-title"><a href="/" rel="home">Projects of TMR</a></p>
+							<p class="site-description">Science × Programming</p>
+			
+			
+		</div> <!-- /header-inner -->
+	</header> <!-- /header -->
+
+	<div class="navigation section no-padding bg-dark">
+		<nav id="site-navigation" class="navigation-inner section-inner clear" role="navigation">
+			<button class="nav-toggle fleft" aria-controls="primary-menu" aria-expanded="false">Menu</button>
+			<div class="main-navigation">
+				<div id="primary-menu" class="menu"><ul>
+<li class="page_item page-item-2"><a href="/about/">About</a></li>
+</ul></div>
+			</div>
+
+			<a class="search-toggle search-icon fright" href="#">Open Search</a>
+		</nav> <!-- /navigation-inner -->
+	</div> <!-- /navigation -->
+
+<div class="wrapper section medium-padding">
+	<main class="section-inner clear" role="main">
+
+				<div class="content clear fleft" id="content">
+
+			
+
+	<article id="post-246" class="post-246 post type-post status-publish format-standard hentry category-uncategorized clear">
+
+		<header class="post-header"><h1 class="post-title entry-title"><a href="/gsoc-2024-bivariate-colormaps-summary/" rel="bookmark">GSOC 2024  &#8211; Bivariate Colormaps &#8211; Summary</a></h1></header>			<div class="post-content clear">
+				
+<p>Color mapping with multiple channels has long been a <a href="https://github.com/matplotlib/matplotlib/issues/14168">requested feature</a> in Matplotlib, one this Google Summer of Code project (GSOC) has attempted to address, the figure below shows the desired functionality: </p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><img fetchpriority="high" decoding="async" width="879" height="578" src="/wp-content/uploads/2024/05/image-4.png" alt="" class="wp-image-167" style="width:588px;height:auto" srcset="/wp-content/uploads/2024/05/image-4.png 879w, /wp-content/uploads/2024/05/image-4-300x197.png 300w, /wp-content/uploads/2024/05/image-4-768x505.png 768w, /wp-content/uploads/2024/05/image-4-600x395.png 600w" sizes="(max-width: 879px) 100vw, 879px"></figure>
+
+
+
+<span id="more-246"></span>
+
+
+
+<p>While a complete solution for bivariate color mapping has not been merged to main at the time of writing, the intention is to have it in place for the 3.10 release of Matplotlib (~October 2024). This represents a delay of the project as compared to the original timeline, caused by a change in the scope of the project. </p>
+
+
+
+<p>Originally, this GSOC project was based on replacing <code>cm.ScalarMappable</code> with a vector version<code>,cm.VectorMappable</code>, (<a href="https://github.com/matplotlib/matplotlib/pull/28428">relevant PR</a>). However, with the involvement of the API lead <a href="https://github.com/timhoffm">@timhoffm</a> it was decided to rework the <code>data→color</code> pipeline before implementing bivariate color mapping. </p>
+
+
+
+<h2 class="wp-block-heading">Color by numbers (advanced version)</h2>
+
+
+
+<p>Representing data with color lies at the root of many of the plotting methods in Matplotlib. In practice, this is handled by the class <code>cm.ScalarMappable</code> which handles normalization (through <code>colors.Normalize</code>) and color mapping (through <code>colors.Colormap</code>). <code>cm.ScalarMappable</code> is therefore at the root of the inheritance tree, together with `artist.Artist`. The figure below shows all the top-level plotting methods that use the data→color transformation.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="604" src="/wp-content/uploads/2024/08/rect400-1024x604.png" alt="" class="wp-image-248" srcset="/wp-content/uploads/2024/08/rect400-1024x604.png 1024w, /wp-content/uploads/2024/08/rect400-300x177.png 300w, /wp-content/uploads/2024/08/rect400-768x453.png 768w, /wp-content/uploads/2024/08/rect400-1536x905.png 1536w, /wp-content/uploads/2024/08/rect400-2048x1207.png 2048w, /wp-content/uploads/2024/08/rect400-1400x825.png 1400w, /wp-content/uploads/2024/08/rect400-600x354.png 600w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+<p>What <a href="https://github.com/timhoffm">@timhoffm</a> <a href="https://github.com/matplotlib/matplotlib/pull/28428">argued</a> was that the <code>data→color</code> pipeline may be shared by multiple elements in the same figure, but the current class hierarchy (subclassing <code>cm.ScallarMappable</code>) is not conducive to this use case, i.e. the user must <a href="https://matplotlib.org/stable/gallery/images_contours_and_fields/multi_image.html#advanced-additionally-sync-the-colormap">manually add callbacks</a> between different graphical objects to obtain this functionality.</p>
+
+
+
+<p>Changing the class hierarchy would have major positive implications:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Increased functionality when working with multiple graphical elements that share a <code>data→color</code> pipeline</li>
+
+
+
+<li>Simplify code maintenance by separation of concerns</li>
+
+
+
+<li>Simplify the introduction of bivariate color mapping</li>
+</ol>
+
+
+
+<p>The proposed architecture change is as follows:</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large is-resized"><img decoding="async" width="982" height="1024" src="/wp-content/uploads/2024/08/rect1242-1-982x1024.png" alt="" class="wp-image-252" style="width:585px;height:auto" srcset="/wp-content/uploads/2024/08/rect1242-1-982x1024.png 982w, /wp-content/uploads/2024/08/rect1242-1-288x300.png 288w, /wp-content/uploads/2024/08/rect1242-1-768x801.png 768w, /wp-content/uploads/2024/08/rect1242-1-600x626.png 600w, /wp-content/uploads/2024/08/rect1242-1.png 995w" sizes="(max-width: 982px) 100vw, 982px"></figure>
+</div>
+
+
+<p>Where the <code>data→color</code> transformation is contained in the new <code>colorizer.Colorizer</code> module, and one colorizer can control the <code>data→color</code> pipeline for multiple plots:<br></p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="478" src="/wp-content/uploads/2024/08/rect1246-1024x478.png" alt="" class="wp-image-255" srcset="/wp-content/uploads/2024/08/rect1246-1024x478.png 1024w, /wp-content/uploads/2024/08/rect1246-300x140.png 300w, /wp-content/uploads/2024/08/rect1246-768x359.png 768w, /wp-content/uploads/2024/08/rect1246-600x280.png 600w, /wp-content/uploads/2024/08/rect1246.png 1154w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+<p>These changes are implemented in the <a href="https://github.com/matplotlib/matplotlib/pull/28658#top">New data → color pipeline</a> PR, and the (slightly outdated) video shows how multiple images that share a colorizer behave.</p>
+
+
+
+<figure class="wp-block-video"><video controls src="/wp-content/uploads/2024/08/1.mp4"></video></figure>
+
+
+
+<h2 class="wp-block-heading">Colormap classes for bivariate (and multivariate) colormaps</h2>
+
+
+
+<p>A separate PR, <a href="https://github.com/matplotlib/matplotlib/pull/28454#top">MultivarColormap and BivarColormap</a>, introduces classes that hold bivariate colormaps.<br>The bivariate colormaps come in different shapes:<br></p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="990" height="374" src="/wp-content/uploads/2024/08/image.png" alt="" class="wp-image-253" srcset="/wp-content/uploads/2024/08/image.png 990w, /wp-content/uploads/2024/08/image-300x113.png 300w, /wp-content/uploads/2024/08/image-768x290.png 768w, /wp-content/uploads/2024/08/image-600x227.png 600w" sizes="(max-width: 990px) 100vw, 990px"></figure>
+
+
+
+<p>while the multivariate colormaps come with different combination modes:</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="995" height="374" src="/wp-content/uploads/2024/08/image-1.png" alt="" class="wp-image-254" srcset="/wp-content/uploads/2024/08/image-1.png 995w, /wp-content/uploads/2024/08/image-1-300x113.png 300w, /wp-content/uploads/2024/08/image-1-768x289.png 768w, /wp-content/uploads/2024/08/image-1-600x226.png 600w" sizes="(max-width: 995px) 100vw, 995px"></figure>
+
+
+
+<h2 class="wp-block-heading">Exposing bivariate (and multivariate) colormaps to plotting methods</h2>
+
+
+
+<p>Using bivariate or multivariate colormaps requires a multivariate normalization, so before the new colormaps can be exposed to users, <a href="https://github.com/matplotlib/matplotlib/commit/1fb5dd808b1367aaad66da29ebeab3b722f6aa5e">a <code>colors.MultiNorm</code> class</a> must be implemented. By using a <code>colors.MultiNorm</code> and a <code>colors.BivarColormap</code> with a  <code>colorizer.Colorizer</code> object, the new functionality can <a href="https://github.com/matplotlib/matplotlib/commit/6018bd7a79518e5058f59431fd036979c16ecfd6">be exposed to the top level plotting functions</a> (i.e. <code>ax.imshow()</code>). </p>
+
+
+
+<p>Both of these features exist as commits (links above), and will be part of a PR after the <a href="https://github.com/matplotlib/matplotlib/pull/28658" data-type="link" data-id="https://github.com/matplotlib/matplotlib/pull/28658">two</a> <a href="https://github.com/matplotlib/matplotlib/pull/28454">other</a> PRs are merged. </p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="574" src="/wp-content/uploads/2024/08/g1370-1024x574.png" alt="" class="wp-image-257" srcset="/wp-content/uploads/2024/08/g1370-1024x574.png 1024w, /wp-content/uploads/2024/08/g1370-300x168.png 300w, /wp-content/uploads/2024/08/g1370-768x430.png 768w, /wp-content/uploads/2024/08/g1370-600x336.png 600w, /wp-content/uploads/2024/08/g1370.png 1376w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+<p>Combined with the functionality of the <code>colorizer.Colorizer</code>, this solution allows for coupled plots where a single axes from a bivariate or multivariate colormap can be used together with the full colormap:</p>
+
+
+
+<figure class="wp-block-video"><video controls src="/wp-content/uploads/2024/08/2.mp4"></video></figure>
+
+
+
+<h2 class="wp-block-heading">Choosing bivariate and multivariate colormaps</h2>
+
+
+
+<p>Once the functionality is implemented, there needs to be colormaps for the user to choose from. I have written two blogposts describing the design considerations relevant for their design:</p>
+
+
+
+<p><a href="/designing-2d-colormaps/" data-type="post" data-id="107">Designing 2D colormaps</a></p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="750" src="/wp-content/uploads/2024/08/image-2.png" alt="" class="wp-image-260" srcset="/wp-content/uploads/2024/08/image-2.png 1024w, /wp-content/uploads/2024/08/image-2-300x220.png 300w, /wp-content/uploads/2024/08/image-2-768x563.png 768w, /wp-content/uploads/2024/08/image-2-600x439.png 600w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+<p><a href="/multivariate-colormaps-for-n-dimensions/" data-type="post" data-id="159">Multivariate colormaps for n dimensions</a></p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="549" src="/wp-content/uploads/2024/08/image-3.png" alt="" class="wp-image-261" srcset="/wp-content/uploads/2024/08/image-3.png 1024w, /wp-content/uploads/2024/08/image-3-300x161.png 300w, /wp-content/uploads/2024/08/image-3-768x412.png 768w, /wp-content/uploads/2024/08/image-3-600x322.png 600w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1024" height="549" src="/wp-content/uploads/2024/08/image-4.png" alt="" class="wp-image-262" srcset="/wp-content/uploads/2024/08/image-4.png 1024w, /wp-content/uploads/2024/08/image-4-300x161.png 300w, /wp-content/uploads/2024/08/image-4-768x412.png 768w, /wp-content/uploads/2024/08/image-4-600x322.png 600w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+
+
+
+<p>In an effort to separate different concerns, these have not been a part of PR#28454 <a href="https://github.com/matplotlib/matplotlib/pull/28454#top">MultivarColormap and BivarColormap</a>, and will need to be introduced in a separate PR.</p>
+
+
+
+<p>This should also feature a guide to how the <a href="http://trygvrad.com/mpl_docs/Bivariate colormaps.html">new functionality</a> <a href="http://trygvrad.com/mpl_docs/Multivariate colormaps.html">can be used</a>, and <a href="http://trygvrad.com/mpl_docs/Bivariate colormap reference.html">how to choose</a> <a href="http://trygvrad.com/mpl_docs/Multivariate colormap reference.html">a colormap</a>.</p>
+
+
+
+<h2 class="wp-block-heading">Colorbars</h2>
+
+
+
+<p>To complete the figure, a multidimensional colorbar must be added. There is a draft for this <a href="https://github.com/matplotlib/matplotlib/commit/a64bb195e37d0a4a2169b7d24beeec3bd59aa3ad">here</a>, but some work still remains. Firstly, a <code>BivarColorbar</code> class must be created (in the multivariate case &#8211; a list of <code>Colorbar</code> objects will work). Secondly, the automatic positioning of the colorbars in the figure needs some improvement. </p>
+
+
+
+<h2 class="wp-block-heading">Summary</h2>
+
+
+
+<p>This project has grown in scope and now includes:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Classes for bivariate and multivariate colormaps <a href="https://github.com/matplotlib/matplotlib/pull/28454">#28454</a>
+</li>
+
+
+
+<li>Reworking the <code>data→color</code> pipeline<a href="https://github.com/matplotlib/matplotlib/pull/28658#top">#28658</a> </li>
+
+
+
+<li>Exposing bivariate and multivariate colormaps to the plotting methods</li>
+
+
+
+<li>A selection of bivariate and multivariate colormaps</li>
+
+
+
+<li>&#8220;Colorbar&#8221; objects for the bivariate and multivariate case</li>
+</ol>
+
+
+
+<p>Of these, step 1 has been approved, and step 2 is (hopefully) near the end of code review. Step 3 waits for step 1 and 2 to be merged, but the PR will be made soon. Step 4 is similarly ready, but the PR should be made after the code review of step 3 has started. The PR for step 5 will similarly follow once step 4 is merged.</p>
+
+
+
+<p>In other words, there is still some work to be done, but as there exists drafts for all the remaining functionality the remaining workloads are less code-intensive, and instead lean towards the collaborative aspects of open source. This project involves re-organizing the <code>data→color</code> pipeline for all relevant plotting methods, and it is therefore important that all the Matplotlib maintainers get to chime in at every step of the way. This process takes time, but ensures a better outcome. </p>
+
+
+
+<p>Thank you to Hannah and Kyle for guiding me through GSOC, and to Elliot, Tom, Tim and Jody for feedback on the PRs.</p>
+			</div>
+<!--/.post-content-->
+		
+			<footer class="post-meta-container clear">
+				
+<div class="entry-author">
+	<div class="author-avatar">
+		<img alt="" src="http://1.gravatar.com/avatar/d0063c81a805b78d8ddd24dbe58b3f0d?s=80&#038;d=mm&#038;r=g" srcset="http://1.gravatar.com/avatar/d0063c81a805b78d8ddd24dbe58b3f0d?s=160&#038;d=mm&#038;r=g 2x" class="avatar avatar-80 photo" height="80" width="80" loading="lazy" decoding="async">	</div>
+<!-- .author-avatar -->
+
+	<div class="author-heading">
+		<h2 class="author-title">Published by <span class="author-name">trygvrad</span>
+</h2>
+	</div>
+<!-- .author-heading -->
+
+	<p class="author-bio">
+				<a class="author-link" href="/author/trygvrad/" rel="author">
+			View all posts by trygvrad		</a>
+	</p>
+<!-- .author-bio -->
+</div>
+<!-- .entry-auhtor -->
+
+				<div class="post-meta clear">
+					
+	<time class="post-date updated" datetime="2024-08-20">
+		<i class="fa fa-clock-o"></i>
+		August 20, 2024	</time>
+
+				<p class="post-categories"><i class="fa fa-folder-open"></i><a href="/category/uncategorized/" rel="category tag">Uncategorized</a></p>
+	
+	
+					
+	<nav class="navigation post-navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="/multivariate-colormaps-for-n-dimensions/" rel="prev">Multivariate colormaps for n dimensions</a></div></div>
+	</nav>									</div>
+			</footer> <!-- /post-meta-container -->
+			
+
+
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/gsoc-2024-bivariate-colormaps-summary/#respond" style="display:none;">Cancel reply</a></small>
+</h3>
+<form action="http://bentus/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p>
+<p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required></textarea></p>
+<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url"></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="246" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+</form>	</div>
+<!-- #respond -->
+	
+	</article> <!-- /post -->
+
+
+		</div> <!-- /content -->
+
+		
+
+	<aside class="sidebar fright" role="complementary">
+		<div id="block-2" class="widget widget_block widget_search"><div class="widget-content clear"><form role="search" method="get" action="http://bentus/" class="wp-block-search__button-outside wp-block-search__text-button wp-block-search">
+<label class="wp-block-search__label" for="wp-block-search__input-1">Search</label><div class="wp-block-search__inside-wrapper ">
+<input class="wp-block-search__input" id="wp-block-search__input-1" placeholder="" value="" type="search" name="s" required><button aria-label="Search" class="wp-block-search__button wp-element-button" type="submit">Search</button>
+</div>
+</form></div></div>
+<div id="block-3" class="widget widget_block"><div class="widget-content clear"><div class="wp-block-group"><div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow">
+<h2 class="wp-block-heading">Recent Posts</h2>
+<ul class="wp-block-latest-posts__list wp-block-latest-posts">
+<li><a class="wp-block-latest-posts__post-title" href="/gsoc-2024-bivariate-colormaps-summary/">GSOC 2024  &#8211; Bivariate Colormaps &#8211; Summary</a></li>
+<li><a class="wp-block-latest-posts__post-title" href="/multivariate-colormaps-for-n-dimensions/">Multivariate colormaps for n dimensions</a></li>
+<li><a class="wp-block-latest-posts__post-title" href="/google-soc-bivariate-colormaps/">Google SoC &#8211; Bivariate colormaps</a></li>
+<li><a class="wp-block-latest-posts__post-title" href="/designing-2d-colormaps/">Designing 2D colormaps</a></li>
+<li><a class="wp-block-latest-posts__post-title" href="/visualizing-dark-field-x-ray-microscopy/">Visualizing Dark-Field X-ray Microscopy</a></li>
+</ul>
+</div></div></div></div>
+<div id="block-4" class="widget widget_block"><div class="widget-content clear"><div class="wp-block-group"><div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow">
+<h2 class="wp-block-heading">Recent Comments</h2>
+<div class="no-comments wp-block-latest-comments">No comments to show.</div>
+</div></div></div></div>	</aside><!-- /sidebar -->
+
+
+	</main> <!-- /section-inner -->
+</div> <!-- /wrapper -->
+
+
+	<div class="footer bg-graphite" id="footer">
+		<div class="section-inner row clear" role="complementary">
+
+			
+				<div class="column column-1 one-third medium-padding">
+					<div class="widgets">
+						<div id="block-6" class="widget widget_block"><div class="widget-content clear">
+<div class="wp-block-group"><div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow"></div></div>
+</div></div>					</div>
+				</div>
+
+			 <!-- /sidebar-2 -->
+
+			 <!-- /sidebar-3 -->
+
+			 <!-- /sidebar-4 -->
+
+		</div> <!-- /section-inner -->
+	</div> <!-- /footer -->
+
+
+	<div class="credits section bg-dark small-padding">
+		<div class="credits-inner section-inner clear">
+
+			<p class="credits-left fleft">
+				<a href="http://wordpress.org/">Proudly powered by WordPress</a>
+				<span class="sep"> | </span>
+				Theme: Baskerville 2 by <a href="http://www.andersnoren.se/teman/baskerville-wordpress-theme/" rel="designer">Anders Noren</a>.			</p>
+
+			<p class="credits-right fright">
+				<a class="tothetop" title="To the top" href="#">Up &uarr;</a>
+			</p>
+		</div> <!-- /credits-inner -->
+	</div> <!-- /credits -->
+
+<script type="text/javascript" src="/wp-content/themes/baskerville-2-wpcom/js/skip-link-focus-fix.js?ver=20151215" id="baskerville-2-skip-link-focus-fix-js"></script>
+<script type="text/javascript" src="/wp-content/themes/baskerville-2-wpcom/js/flexslider.js?ver=6.6.1" id="baskerville-2-flexslider-js"></script>
+<script type="text/javascript" src="/wp-includes/js/imagesloaded.min.js?ver=5.0.0" id="imagesloaded-js"></script>
+<script type="text/javascript" src="/wp-includes/js/masonry.min.js?ver=4.2.2" id="masonry-js"></script>
+<script type="text/javascript" src="/wp-content/themes/baskerville-2-wpcom/js/global.js?ver=6.6.1" id="baskerville-2-global-js"></script>
+<script type="text/javascript" src="/wp-includes/js/comment-reply.min.js?ver=6.6.1" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
+
+</body>
+</html>
