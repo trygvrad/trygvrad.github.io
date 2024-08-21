@@ -12,7 +12,7 @@
 	<atom:link href="/author/trygvrad/feed/" rel="self" type="application/rss+xml" />
 	<link>/</link>
 	<description>Science × Programming</description>
-	<lastBuildDate>Tue, 20 Aug 2024 15:40:08 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 21 Aug 2024 12:01:40 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -22,20 +22,22 @@
 	<item>
 		<title>GSOC 2024  &#8211; Bivariate Colormaps &#8211; Summary</title>
 		<link>/gsoc-2024-bivariate-colormaps-summary/</link>
-					<comments>/gsoc-2024-bivariate-colormaps-summary/#respond</comments>
 		
 		<dc:creator><![CDATA[trygvrad]]></dc:creator>
 		<pubDate>Tue, 20 Aug 2024 15:40:08 +0000</pubDate>
 				<category><![CDATA[Uncategorized]]></category>
 		<guid isPermaLink="false">/?p=246</guid>
 
-					<description><![CDATA[Color mapping with multiple channels has long been a requested feature in Matplotlib, one this Google Summer of Code project (GSOC) has attempted to address, the figure below shows the desired functionality: While a complete solution for bivariate color mapping has not been merged to main at the time of writing, the intention is to... <a class="more-link" href="/gsoc-2024-bivariate-colormaps-summary/#more-246">Continue Reading &#8594;</a>]]></description>
+					<description><![CDATA[Color mapping with multiple channels has long been a requested feature in Matplotlib, one this Google Summer of Code project (GSOC) has attempted to address, the figures below shows the desired functionality: While a complete solution for bivariate color mapping has not been merged to main at the time of writing, the intention is to... <a class="more-link" href="/gsoc-2024-bivariate-colormaps-summary/#more-246">Continue Reading &#8594;</a>]]></description>
 										<content:encoded><![CDATA[
-<p>Color mapping with multiple channels has long been a <a href="https://github.com/matplotlib/matplotlib/issues/14168">requested feature</a> in Matplotlib, one this Google Summer of Code project (GSOC) has attempted to address, the figure below shows the desired functionality: </p>
+<p>Color mapping with multiple channels has long been a <a href="https://github.com/matplotlib/matplotlib/issues/14168">requested feature</a> in Matplotlib, one this Google Summer of Code project (GSOC) has attempted to address, the figures below shows the desired functionality:</p>
 
 
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img fetchpriority="high" decoding="async" width="879" height="578" src="/wp-content/uploads/2024/05/image-4.png" alt="" class="wp-image-167" style="width:570px;height:auto" srcset="/wp-content/uploads/2024/05/image-4.png 879w, /wp-content/uploads/2024/05/image-4-300x197.png 300w, /wp-content/uploads/2024/05/image-4-768x505.png 768w, /wp-content/uploads/2024/05/image-4-600x395.png 600w" sizes="(max-width: 879px) 100vw, 879px" /></figure></div>
 
-<figure class="wp-block-image size-full is-resized"><img fetchpriority="high" decoding="async" width="879" height="578" src="/wp-content/uploads/2024/05/image-4.png" alt="" class="wp-image-167" style="width:588px;height:auto" srcset="/wp-content/uploads/2024/05/image-4.png 879w, /wp-content/uploads/2024/05/image-4-300x197.png 300w, /wp-content/uploads/2024/05/image-4-768x505.png 768w, /wp-content/uploads/2024/05/image-4-600x395.png 600w" sizes="(max-width: 879px) 100vw, 879px" /></figure>
+
+<figure class="wp-block-image size-full"><img decoding="async" width="940" height="542" src="/wp-content/uploads/2024/08/image-6.png" alt="" class="wp-image-269" srcset="/wp-content/uploads/2024/08/image-6.png 940w, /wp-content/uploads/2024/08/image-6-300x173.png 300w, /wp-content/uploads/2024/08/image-6-768x443.png 768w, /wp-content/uploads/2024/08/image-6-600x346.png 600w" sizes="(max-width: 940px) 100vw, 940px" /></figure>
 
 
 
@@ -47,7 +49,7 @@
 
 
 
-<p>Originally, this GSOC project was based on replacing <code>cm.ScalarMappable</code> with a vector version<code>,cm.VectorMappable</code>, (<a href="https://github.com/matplotlib/matplotlib/pull/28428">relevant PR</a>). However, with the involvement of the API lead <a href="https://github.com/timhoffm">@timhoffm</a> it was decided to rework the <code>data→color</code> pipeline before implementing bivariate color mapping. </p>
+<p>Originally, this GSOC project was based on replacing <code>cm.ScalarMappable</code> with a vector version<code>,cm.VectorMappable</code>, (<a href="https://github.com/matplotlib/matplotlib/pull/28428">relevant PR</a>). However, with the involvement of the API lead <a href="https://github.com/timhoffm">@timhoffm</a> and project lead <a href="https://github.com/tacaswell" data-type="link" data-id="https://github.com/tacaswell">@tacasawell</a> it was decided to rework the <code>data→color</code> pipeline before implementing bivariate color mapping.</p>
 
 
 
@@ -55,7 +57,7 @@
 
 
 
-<p>Representing data with color lies at the root of many of the plotting methods in Matplotlib. In practice, this is handled by the class <code>cm.ScalarMappable</code> which handles normalization (through <code>colors.Normalize</code>) and color mapping (through <code>colors.Colormap</code>). <code>cm.ScalarMappable</code> is therefore at the root of the inheritance tree, together with `artist.Artist`. The figure below shows all the top-level plotting methods that use the data→color transformation.</p>
+<p>Representing data with color lies at the root of many of the plotting methods in Matplotlib. In practice, this is handled by the class <code>cm.ScalarMappable</code> which handles normalization (converting data to a 0-1 scale through <code>colors.Normalize</code>) and color mapping (converting the 0-1 encoding to colors through <code>colors.Colormap</code>). <code>cm.ScalarMappable</code> is therefore at the root of the inheritance tree, together with `artist.Artist`. The figure below shows all the top-level plotting methods that use the data→color transformation.</p>
 
 
 
@@ -63,7 +65,7 @@
 
 
 
-<p>What <a href="https://github.com/timhoffm">@timhoffm</a> <a href="https://github.com/matplotlib/matplotlib/pull/28428">argued</a> was that the <code>data→color</code> pipeline may be shared by multiple elements in the same figure, but the current class hierarchy (subclassing <code>cm.ScallarMappable</code>) is not conducive to this use case, i.e. the user must <a href="https://matplotlib.org/stable/gallery/images_contours_and_fields/multi_image.html#advanced-additionally-sync-the-colormap">manually add callbacks</a> between different graphical objects to obtain this functionality.</p>
+<p>What <a href="https://github.com/timhoffm">@timhoffm</a> <a href="https://github.com/matplotlib/matplotlib/pull/28428">argued</a> was that the <code>data→color</code> pipeline may be shared by multiple elements in the same figure, but the current class hierarchy (subclassing <code>cm.ScallarMappable</code>) is not conducive to this use case, i.e. the user must <a href="https://matplotlib.org/stable/gallery/images_contours_and_fields/multi_image.html#advanced-additionally-sync-the-colormap">manually add callbacks</a> between different graphical objects to obtain functionality such as syncing the colormaps across plots</p>
 
 
 
@@ -76,11 +78,11 @@
 
 
 
-<li>Simplify code maintenance by separation of concerns</li>
+<li>Simplify code maintenance separating the artist (graphical element) from the <code>data→color</code> pipeline¹ (i.e. more modular code)</li>
 
 
 
-<li>Simplify the introduction of bivariate color mapping</li>
+<li>Simplify the introduction of bivariate and multivariate color mapping</li>
 </ol>
 
 
@@ -89,7 +91,7 @@
 
 
 <div class="wp-block-image">
-<figure class="aligncenter size-large is-resized"><img decoding="async" width="982" height="1024" src="/wp-content/uploads/2024/08/rect1242-1-982x1024.png" alt="" class="wp-image-252" style="width:585px;height:auto" srcset="/wp-content/uploads/2024/08/rect1242-1-982x1024.png 982w, /wp-content/uploads/2024/08/rect1242-1-288x300.png 288w, /wp-content/uploads/2024/08/rect1242-1-768x801.png 768w, /wp-content/uploads/2024/08/rect1242-1-600x626.png 600w, /wp-content/uploads/2024/08/rect1242-1.png 995w" sizes="(max-width: 982px) 100vw, 982px" /></figure></div>
+<figure class="aligncenter size-large is-resized"><img loading="lazy" decoding="async" width="982" height="1024" src="/wp-content/uploads/2024/08/rect1242-1-982x1024.png" alt="" class="wp-image-252" style="width:585px;height:auto" srcset="/wp-content/uploads/2024/08/rect1242-1-982x1024.png 982w, /wp-content/uploads/2024/08/rect1242-1-288x300.png 288w, /wp-content/uploads/2024/08/rect1242-1-768x801.png 768w, /wp-content/uploads/2024/08/rect1242-1-600x626.png 600w, /wp-content/uploads/2024/08/rect1242-1.png 995w" sizes="(max-width: 982px) 100vw, 982px" /></figure></div>
 
 
 <p>Where the <code>data→color</code> transformation is contained in the new <code>colorizer.Colorizer</code> module, and one colorizer can control the <code>data→color</code> pipeline for multiple plots:<br></p>
@@ -112,7 +114,11 @@
 
 
 
-<p>A separate PR, <a href="https://github.com/matplotlib/matplotlib/pull/28454#top">MultivarColormap and BivarColormap</a>, introduces classes that hold bivariate colormaps.<br>The bivariate colormaps come in different shapes:<br></p>
+<p>A separate PR, <a href="https://github.com/matplotlib/matplotlib/pull/28454#top">MultivarColormap and BivarColormap</a>, introduces classes that hold bivariate and multivariate colormaps.</p>
+
+
+
+<p>The bivariate colormaps come in different shapes:<br></p>
 
 
 
@@ -235,10 +241,78 @@
 
 
 <p>Thank you to Hannah and Kyle for guiding me through GSOC, and to Elliot, Tom, Tim and Jody for feedback on the PRs.</p>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<p>¹ The distinction between the <code>Colorizer</code> and <code>ColorizingArtist</code> objects are as follows:</p>
+
+
+
+<ul class="wp-block-list">
+<li><code>ColorizingArtist</code> subclasses <code>Artist</code>, i.e. it refers to a specific graphical element in a plot. It has the following atributes:
+<ul class="wp-block-list">
+<li>data</li>
+
+
+
+<li>alpha (opacity)</li>
+
+
+
+<li><code>colorizer</code></li>
+
+
+
+<li>A <code>.draw(renderer)</code> method to render (display) the graphical elements. </li>
+
+
+
+<li>&#8230;²</li>
+
+
+
+<li>&#8230;³</li>
+</ul>
+</li>
+
+
+
+<li><code>Colorizer</code> holds the <code>data→color</code> pipeline. It consists of:
+<ul class="wp-block-list">
+<li><code>norm</code></li>
+
+
+
+<li><code>cmap</code></li>
+
+
+
+<li>A <code>.to_rgba(data, alpha)</code> method that assignes color (red, green, blue, alpha) to data using the <code>norm</code> and <code>cmap</code>.</li>
+</ul>
+</li>
+</ul>
+
+
+
+<p>When rendering a <code>ColorizingArtist</code>, it will invoke <code>self.colorizer.to_rgba(data, alpha)</code> to determine what colors to render.</p>
+
+
+
+<p>² <code>ColorizingArtist</code> also has attributes required of an <code>Artist</code>, such as position, size, etc. relating to rendering of the artist in an <code>Axes</code>. </p>
+
+
+
+<p>³ The <code>norm</code> and <code>cmap</code> are accessible as attributes on a <code>ColorizingArtist</code> through the use of <code>@property</code>. For many users, the distinction between the <code>ColorizingArtist</code> and <code>Colorizer</code> will therefore not be felt. </p>
+
+
+
+<p></p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/gsoc-2024-bivariate-colormaps-summary/feed/</wfw:commentRss>
-			<slash:comments>0</slash:comments>
 		
 		<enclosure url="/wp-content/uploads/2024/08/1.mp4" length="561098" type="video/mp4" />
 <enclosure url="/wp-content/uploads/2024/08/2.mp4" length="355100" type="video/mp4" />
